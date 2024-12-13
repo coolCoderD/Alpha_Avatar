@@ -1,0 +1,39 @@
+/* src/components/common/Button.css */
+
+.button {
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden; /* Hide overflow to keep the pseudo-element within rounded corners */
+    z-index: 1; /* Make sure button content is above the pseudo-element */
+    height:60px;
+    font-family: DM Sans;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px; /* Match the button's border radius */
+    padding: 2px; /* Border width */
+    background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+    z-index: -1; /* Position the pseudo-element behind the button content */
+  }
+  
+  .button:hover {
+    background-color: #5f27cd;
+    color: #ffffff;
+  }
+  
+  

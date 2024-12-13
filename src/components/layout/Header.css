@@ -1,0 +1,58 @@
+/* src/components/layout/Header.css */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #0b0c10, #1f1f3a);
+    color: #f1f1f1;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .logo-icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    color: #d1d1e9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-family: DM Sans;
+
+  }
+  
+  .nav-links a:hover {
+    color: #ffffff;
+  }
+  
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .header > div {
+      margin-bottom: 1rem;
+    }
+  
+    .header nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }

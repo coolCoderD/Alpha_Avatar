@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Ensure the site is not accessed via a directory listing
+  Options -Indexes
+
+  # Redirect to HTTPS if needed
+  # Uncomment the following lines if you want to force HTTPS
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Redirect all requests to the index.html except for existing files and directories
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+
+</IfModule>
+
+# Set Cache-Control headers for static assets
+<FilesMatch "\.(js|css|html|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|ttf|json)$">
+  Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
