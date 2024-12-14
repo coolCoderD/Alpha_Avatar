@@ -348,10 +348,10 @@ const[selectedValue,setSelectedValue]=useState('Select')
                         Login
                       </div>
                     </div>
-
-
-                    <div 
-    className={`flex rounded-md  mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg  ${
+</div>
+<div className="flex justify-center items-center">
+<div 
+    className={`flex rounded-md w-full mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg  ${
     loading ? "opacity-50 cursor-not-allowed animate-pulse" : ""}`}>
     <button className="flex-1 z-50 font-bold text-xl bg-[#7186FF] px-6 py-1 rounded-md"
       onClick={(e) => handleRegisterUser(e)}
@@ -362,23 +362,7 @@ const[selectedValue,setSelectedValue]=useState('Select')
     </button>
 </div>
 
-
-                    {/* <button
-  onClick={(e) => handleRegisterUser(e)}
-  disabled={loading}
-  className={`flex rounded-full mx-auto  bg-gradient-to-r from-blue-500 to-pink-500 ${
-    loading ? "opacity-50 cursor-not-allowed animate-pulse" : ""
-  }`}
->
-  <div className="flex-1 font-bold text-xl bg-white px-6 py-1 rounded-full ">
-    {!loading ? "Next "  : "Processing..."}
-  </div>
-</button> */}
-
 </div>
-
-                
-                  
                
               </form>
             </div>

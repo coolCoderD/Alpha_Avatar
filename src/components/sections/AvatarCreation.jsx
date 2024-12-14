@@ -231,7 +231,7 @@ const AvatarCreation = () => {
 
   return (
     <section
-      className=" py-10 overflow-hidden gradient-img  px-4 flex flex-col md:flex-row w-full "
+      className=" py-10 overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
       style={{ alignItems: "flex-start" }}
     >
 
@@ -279,15 +279,15 @@ const AvatarCreation = () => {
   </Box>
 </Modal>
       <div className="creation-div1 p-8 h-[100%]  rounded-2xl gap-4  w-[100%] md:w-[30%] flex flex-col items-center"
-       style={{ minWidth: "400px" }}
+       style={{ minWidth: "500px" }}
       >
-        <div className="small-text mt-12 ">Generate Avatars !</div>
+        <div className=" mt-12  text-2xl">Generate Avatars !</div>
         <div className="gradient-border w-[100%]">
           <input
             onChange={(e) => {
               setAvatarText(e.target.value);
             }}
-            className="styled-input  h-[48px] "
+            className="styled-input   h-[48px] "
             placeholder="Type your name here...!"
           />
         </div>
@@ -295,7 +295,7 @@ const AvatarCreation = () => {
 
         {
          !membership  &&         <div className="text-center text-gray-500 mt-2">
-          Free Avatars Left: {freeAvatarCount}
+          Free Avatars Left: {freeAvatarCount}/3
         </div>
         }
 
@@ -311,7 +311,7 @@ const AvatarCreation = () => {
           style={{
             cursor: loading ? "not-allowed" : "pointer",
             fontSize: 16,
-            width: "80%",
+            width: "100%",
             height: 55,
           }}
           className={`create-your-avatar-btn ${
@@ -335,7 +335,7 @@ const AvatarCreation = () => {
             width: "70%",
             height: 55,
           }}
-          className={`create-your-avatar-btn `}
+          className={`create-your-avatar-btn mr-24 `}
           >Explore Memberships
 </button>
           </div>
@@ -351,7 +351,7 @@ const AvatarCreation = () => {
           style={{
             cursor: loading || freeAvatarCount <= 0 ? "not-allowed" : "pointer",
             fontSize: 16,
-            width: "80%",
+            width: "100%",
             height: 55,
           }}
           className={`create-your-avatar-btn ${
@@ -381,7 +381,7 @@ const AvatarCreation = () => {
           </div>
       }
 
-        <div className="gradient-border w-[100%]">
+        <div className="gradient-border mr-20  md:mr-0 w-[100%]">
           <div className="styled-input flex flex-col gap-4 ">
           {info.map(({ imageSrc, text, imageClass, textClass = "ml-12" }, index) => (
       <div key={index} className="flex flex-row relative justify-center items-center gap-1">
@@ -396,7 +396,7 @@ const AvatarCreation = () => {
 
       {!avatarUrl && !loading ? (
         <div
-  className="h-[200px] flex justify-center items-center my-auto mx-auto text-[48px] font-bold opacity-50 "
+  className="h-[200px] mt-5 flex justify-center items-center my-auto mx-auto text-[48px] font-bold opacity-50 "
 >
   <span>Start Creating Some <br />
   Amazing Avatars!</span>

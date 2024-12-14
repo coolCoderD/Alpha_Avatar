@@ -39,8 +39,8 @@ const Memberships = () => {
       }}
     >
       <div className="flex flex-col">
-        <div className="text-[#7186FF] text-[13px] text-center">PRICING</div>
-        <div className="gradient-text  p-0">Simple Memberships </div>
+        {/* <div className="text-[#7186FF] text-[13px] text-center">PRICING</div> */}
+        <div className="gradient-text-m text-4xl mb-4  p-0">Simple Memberships </div>
       </div>
       <div className="flex flex-col">
         <div className="small-text ">Use the Startup Framework for free. </div>
@@ -56,48 +56,16 @@ const Memberships = () => {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <div className="gradient-border w-[100%] md:w-[40%]">
-          <div
-            onClick={() => {
-              navigate("/login");
-            }}
-            style={{
-              background: "#000 !important",
-              fontWeight: 400,
-              fontSize: 16,
-              display: "flex",
-            }}
-            className="styled-button px-3 py-4 small-text flex flex-col md:flex-row justify-between items-center"
-          >
-            <div className="w-fit-content ">Already have a subscription ?</div>
-            <div
-              style={{
-                fontSize: 16,
-                padding: 0,
-                textAlign: "right",
-                width: "fit-content",
-                textDecoration: "underline",
-              }}
-              className="gradient-text"
-            >
-              <img
-                style={{ width: 150 }}
-                src="/assets/images/Link your accounts.png"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       <div className="text-center">
         <div
           className="gradient-text p-0 "
-          style={{ fontSize: 20, fontWeight: 400 }}
+          style={{ fontSize: 30, fontWeight: 400 }}
         >
           Choose a plan that works for you
         </div>
-        <div className="w-fit-content p-0">
+        <div className="w-fit-content text-lg p-0">
           Get Unlimited trials after subscription !
         </div>
       </div>

@@ -6,6 +6,8 @@ module.exports = {
         scrollbarThumbStart: '#6541F9',
         scrollbarThumbEnd: '#F3748E',
         scrollbarTrack: '#f1f1f1',
+
+        
       },
     },
   },

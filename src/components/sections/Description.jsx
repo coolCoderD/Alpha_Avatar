@@ -21,23 +21,24 @@ const Description = () => {
         display: "flex",
         justifyContent: "center",
         backgroundColor: "#0b0c10",
-
+     
       }}
     >
       <div
+  
         style={{
-          height: 900,
+      
           zIndex: 0,
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <div className="login-bg w-[60%] left-[20%]  " >
-          <div className="flex flex-col md:flex-col justify-center w-[100%] pl-10 pr-10 pt-10">
-            <div className="bigText text-center">
+        <div className="login-bg w-[60%]   " >
+          <div className="flex flex-col md:flex-col justify-center w-[100%] md:pl-10 pr-14 pr-10 pt-10">
+            <div className="bigText pl-9 text-center mb-4 ">
               What description suits you best ?
             </div>
-            <div className="flex flex-col justify-center items-center w-[100%] md:w-[100%] p-[20px]">
+            <div className="grid grid-cols-1 px-auto place-items-center ">
             <form className="flex flex-col gap-3 w-[100%] md:w-[75%]">
       {[
         "Corporate Gifting",
@@ -48,7 +49,7 @@ const Description = () => {
       ].map((option) => (
         <div
           key={option}
-          className={`flex rounded-md  cursor-pointer z-20 mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg ${selectedOption === option ? "active" : ""}`}
+          className={`flex rounded-md w-full cursor-pointer z-20 mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg ${selectedOption === option ? "active" : ""}`}
           style={{
             padding: 2,
             border: selectedOption === option ? "2px solid #6a5acd" : "none",
@@ -64,6 +65,14 @@ const Description = () => {
           </div>
         </div>
       ))}
+      <div className="flex flex-row justify-center items-center cursor-pointer ml-9">
+                  <div onClick={()=>{window.location.href = "/avatar-creation"}} className="flex download-img-btn rounded-lg flex-row justify-center items-center w-[90%] mt-10">
+                  <div className="text-2xl font-semibold  cursor-pointer p-1">Let's Start Creating Some Avatars</div>
+                  <div>
+
+                  </div>
+                </div>
+                </div>
     </form>
               {/* <div onClick={()=>{navigate('/otp',{state})}} className="flex flex-row justify-end items-center w-[90%] mt-10">
                   <div className="next-gradient-text p-1">Next</div>
@@ -71,13 +80,8 @@ const Description = () => {
                     <img style={{width:70}} src="/assets/images/Arrow 1.png" />
                   </div>
                 </div> */}
-                              <div onClick={()=>{window.location.href = "/avatar-creation"}} className="flex flex-row justify-end items-center w-[90%] mt-10">
-                  <div className="next-gradient-text cursor-pointer p-1">Let's Start Creating Some Avatars</div>
-                  <div>
-
-                  </div>
-                </div>
             </div>
+
           </div>
         </div>
       </div>

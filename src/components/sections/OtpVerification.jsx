@@ -253,7 +253,8 @@ const OtpVerification = () => {
             Sign in
           </div>
 
-          <div className="login-border "></div>
+
+
           <div className="flex flex-col md:flex-row ">
           <div
               className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]"
@@ -265,7 +266,7 @@ const OtpVerification = () => {
               <div className=" w-[100%] bigText  md:text-left mt-10">
                 OTP Verification
               </div>
-              <div className="flex flex-row md:flex-col gap-12 mt-2 mb-6">
+              <div className="flex flex-col md:flex-row gap-12 mt-2 mb-6">
           <input
             type="text"
             placeholder="Enter phone number"
@@ -281,21 +282,30 @@ const OtpVerification = () => {
                 number.
               </div>
               <div className="flex flex-wrap gap-2 mt-10 justify-center md:justify-start w-full">
-              {[...Array(6)].map((_, index) => (
-  <div key={index} className="gradient-border-otp">
-    <input
-      id={`otp-input-${index}`}
-      type="text"
-      maxLength={1}
-      className="styled-input text-center"
-      style={{ width: 50, height: 50 }}
-      value={otp[index]}
-      onChange={(e) => handleChange(e.target.value, index)}
-    />
-  </div>
-))}
-
+  {[...Array(6)].map((_, index) => (
+    <div key={index} className="gradient-border-otp">
+      <input
+        id={`otp-input-${index}`}
+        type="text"
+        maxLength={1}
+        inputMode="numeric" // Ensures numeric keyboard is shown
+        className="styled-input text-center"
+        style={{ width: 50, height: 50 }}
+        value={otp[index]}
+        onChange={(e) => handleChange(e.target.value, index)}
+        onKeyDown={(e) => {
+          if (e.key === "Backspace" && otp[index] === "") {
+            // Handle backspace navigation
+            if (index > 0) {
+              document.getElementById(`otp-input-${index - 1}`).focus();
+            }
+          }
+        }}
+      />
+    </div>
+  ))}
 </div>
+
               <div className="flex flex-row text-center md:text-left w-[100%]">
               <div className="small-dmsans w-[100%] mt-1" style={{ fontSize: 13 }}>
   Code will expire in {formatTime(timeLeft)}
@@ -304,7 +314,7 @@ const OtpVerification = () => {
               </div>
 <div className="flex justify-end">
 
-<div className="gradient-border w-[30%] mt-10">
+<div className="gradient-border w-[60%] mt-10">
                 <button
 onClick={()=>{handleVerifyOtp()}}
                   className="styled-button"
@@ -317,7 +327,7 @@ onClick={()=>{handleVerifyOtp()}}
               </div>
             </div>
           </div>
-          <div className="login-border " style={{ marginTop: 40 }}></div>
+ 
         </div>
       </div>
     </div>

@@ -277,6 +277,25 @@ footer nav a {
   font-family: "Satoshi", sans-serif;
 }
 
+
+.gradient-text-m {
+
+  font-weight: 800;
+  text-align: center;
+  color: transparent; /* Make the text transparent */
+  background: linear-gradient(
+    90deg,
+    #e75480,
+    #7f7fff
+  ); /* Define gradient colors */
+
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text; /* Standard property for clipping */
+  padding: 1rem;
+  display: inline-block; /* Prevent full-width stretching */
+  font-family: "Satoshi", sans-serif;
+}
+
 .next-gradient-text {
   font-size: 2rem; /* Adjust as needed */
   font-weight: bold;

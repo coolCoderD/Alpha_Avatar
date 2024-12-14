@@ -20,7 +20,7 @@ import EditAvatar from './components/sections/EditAvatar';
 import FeedbackForm from './components/sections/FeedbackForm';
 
 import ProtectedRoute from './components/layout/ProtectedRoute';
-import { PricingSection } from './components/sections/Pricing/PricingSection';
+// import { PricingSection } from './components/sections/Pricing/PricingSection';
 import TestComponent from './components/TestComponet';
 
 function App() {
@@ -41,7 +41,6 @@ function App() {
           <Route path="/team" element={<TeamSection />} />
           <Route path="/join-waitlist" element={<JoinWaitlist />} />
           <Route path="/feedback" element={<FeedbackForm />} />
-         <Route path='/price' element={<PricingSection />} />
          <Route path='/test' element={<TestComponent/>}/>
         </Routes>
       </Layout>

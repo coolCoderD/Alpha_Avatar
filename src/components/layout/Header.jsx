@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import Button from "../common/Button";
 import "./Header.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {useUser} from '../../Context/UserContext'
 
@@ -9,8 +9,12 @@ const Header = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [active, setActive] = useState("");
   const [isSubscriptionPopupVisible, setIsSubscriptionPopupVisible] = useState(false);
-
+  const location = useLocation();
   const navigate = useNavigate();
+
+
+  const isMembershipPlanPage = location.pathname.includes("/memberships-plan");
+
 
   // Consume user context
   const { user, membership, fetchUserAndMembership, logout } = useUser();
@@ -39,11 +43,13 @@ const Header = () => {
 
   return (
     <header className="header">
+      <div className="flex items-center justify-between w-full">
       <div
+      className="gap-2"
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+        
           width: 250,
         }}
       >
@@ -61,8 +67,16 @@ const Header = () => {
         </Link>
       </div>
 
-      <nav>
-        {user ? (
+      <div className="flex gap-7 justify-center items-center">
+
+        {
+          membership?
+          <div className="bg-white cursor-pointer w-full text-lg text-black px-6 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>
+          :<div 
+          onClick={()=>navigate('/memberships')}
+          className="bg-white cursor-pointer w-full text-lg text-black px-6 py-1 rounded-full ">Subscribe Now</div>
+        }
+      {user ? (
           <>
             <img
               onClick={() => {
@@ -188,7 +202,7 @@ const Header = () => {
                   gap: "12px",
                 }}
               >
-                {membership ? (
+                {membership && !isMembershipPlanPage ? (
                   <>
                     <div className="text-black flex gap-10 px-12 py-4">
                       <div>Membership Charges</div>
@@ -220,6 +234,10 @@ const Header = () => {
             Sign in
           </a>
         )}
+        </div>
+        </div>
+      <nav>
+
       </nav>
     </header>
   );
