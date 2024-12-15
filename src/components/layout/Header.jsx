@@ -67,15 +67,19 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="flex gap-7 justify-center items-center">
 
-        {
+      <div className="flex justify-center -ml-24 items-center">
+      {
           membership?
-          <div className="bg-white cursor-pointer w-full text-lg text-gray-700 px-6 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>
+          <div className="bg-white cursor-pointer text-lg text-gray-700 px-4 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>
           :<div 
           onClick={()=>navigate('/memberships')}
-          className="bg-white cursor-pointer w-full text-lg text-gray-700 px-6 py-1 rounded-full ">Subscribe Now</div>
+          className="bg-white cursor-pointer  text-lg text-gray-700 px-4 py-1 rounded-full ">Subscribe Now</div>
         }
+        </div>
+
+      <div className="flex gap-7 flex-col md:flex-row justify-center items-center">
+
       {user ? (
           <>
             <img
@@ -221,7 +225,7 @@ const Header = () => {
 {
   !membership &&                 <button
   onClick={renewHandler}
-  className="cursor-pointer rounded-lg mt-4 py-2 px-4 text-white w-[50%] bg-[#7186FF]"
+  className="cursor-pointer text-center rounded-lg mt-1 py-2 px-[6px] text-white w-[50%] bg-[#7186FF]"
 >
  Subscribe
 </button>
@@ -231,7 +235,7 @@ const Header = () => {
           </>
         ) : (
           <a href="/sign-in" className="hover:text-white" style={{ fontSize: 20, fontWeight: 800 }}>
-            Sign in
+            Signin
           </a>
         )}
         </div>

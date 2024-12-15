@@ -59,10 +59,10 @@ const FeatureControlPanel = ({ features, imageURL,text }) => {
   const handleModalClose = () => setOpen(false);
 
 
-  const originalWidth = 5600; // Original image width
-  const originalHeight = 5600; // Original image height
-  const canvasWidth = 300; // Canvas width in portrait
-  const canvasHeight = 300; // Canvas height in portrait
+  const originalWidth = 5000; // Original image width
+  const originalHeight = 5000; // Original image height
+  const canvasWidth = 450; // Canvas width in portrait
+  const canvasHeight = 450; // Canvas height in portrait
   
   // Calculate scaling factors for portrait orientation
   const scaleX = canvasWidth / originalWidth;
@@ -480,7 +480,7 @@ const storeDownloadData = async (userId, downloadData) => {
   }, [featureStates]);
 
   return (
-    <section className="py-10 overflow-hidden  px-4 flex flex-col md:flex-row w-full">
+    <section className="py-10 overflow-hidden  flex flex-col md:flex-row w-full">
       <Modal open={feedbackOpen} onClose={closeFeedback}>
         <Box
           className="w-[400px] md:w-[800px]"
@@ -589,7 +589,7 @@ const storeDownloadData = async (userId, downloadData) => {
           ))}
 
         </RadioGroup>
-        {["width", "height", "x", "y"].map((type) => (
+        {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
           <div key={type} className="w-[70%] flex flex-col justify-center px-2 py-3 items-start">
             <div className="gradient-text" style={{ fontSize: 18 }}>
               {type.toUpperCase()}:
@@ -629,10 +629,10 @@ const storeDownloadData = async (userId, downloadData) => {
       </div>
 
       {/* Preview Section */}
-      <div className="w-full md:w-[60%] flex flex-col p-10 gap-4">
+      <div className="w-full  md:w-[60%] flex flex-col p-10 gap-4">
         <div
           id="preview-section"
-          className="rounded-[8px] h-[600px]   flex  justify-center items-center  w-full p-24 bg-white overflow-hidden   "
+          className="rounded-[8px] h-full  bg-white flex  justify-center items-center  w-full  overflow-hidden   "
         >
           <canvas
             id="mainCanvas"

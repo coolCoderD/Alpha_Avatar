@@ -4,10 +4,10 @@ const AvatarPreview = ({ featureArray }) => {
   const [previewImage, setPreviewImage] = useState(null);
   const [loading, setLoading] = useState(false); // Loading state
   const canvasRef = useRef(null);
-  const originalWidth = 5600; // Original image width
-  const originalHeight = 5600; // Original image height
-  const canvasWidth = 400; // Canvas width in portrait
-  const canvasHeight = 300; // Canvas height in portrait
+  const originalWidth = 5000; // Original image width
+  const originalHeight = 5000; // Original image height
+  const canvasWidth = 450; // Canvas width in portrait
+  const canvasHeight = 450; // Canvas height in portrait
   
   // Calculate scaling factors for portrait orientation
   const scaleX = canvasWidth / originalWidth;

@@ -58,7 +58,7 @@ const Success = () => {
             <div className="py-10 text-center">
                 <a 
                 onClick={() => {navigate("/avatar-creation")}}
-                href="#" className="px-12 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3">
+                href="#" className="px-12 bg-[#7186FF] hover:bg-[#5267df] text-white font-semibold py-3">
                     GO BACK 
                </a>
             </div>
