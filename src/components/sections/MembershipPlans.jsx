@@ -99,26 +99,40 @@ const MembershipPlans = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        {
-          membership? 
-          <button
-          onClick={handleCheckout}
-          disabled
-          className={`mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300  bg-gray-400 cursor-not-allowed `}
-        >
-          You already have membership
-        </button>:        <button
-          onClick={handleCheckout}
-          disabled={isProcessing}
-          className={`mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 ${
-            isProcessing
-              ? "bg-gray-400 cursor-not-allowed animate-pulse"
-              : "gradient-border"
-          }`}
-        >
-          {isProcessing ? "Processing Payment..." : "Proceed to Pay"}
-        </button>
-        }
+      {
+  user ? (
+    membership ? (
+      <button
+        onClick={handleCheckout}
+        disabled
+        className="mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 bg-gray-400 cursor-not-allowed"
+      >
+        You already have membership
+      </button>
+    ) : (
+      <button
+        onClick={handleCheckout}
+        disabled={isProcessing}
+        className={`mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 ${
+          isProcessing
+            ? "bg-gray-400 cursor-not-allowed animate-pulse"
+            : "gradient-border"
+        }`}
+      >
+        {isProcessing ? "Processing Payment..." : "Proceed to Pay"}
+      </button>
+    )
+  ) : (
+    <button
+      onClick={handleCheckout}
+      disabled
+      className="mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 bg-gray-400 cursor-not-allowed"
+    >
+      Please Register First
+    </button>
+  )
+}
+
       </div>
     </div>
   );

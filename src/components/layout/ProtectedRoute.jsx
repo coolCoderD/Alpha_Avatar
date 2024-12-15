@@ -5,9 +5,10 @@ import { useUser } from "../../Context/UserContext";
 const ProtectedRoute = ({ children }) => {
   const { user } = useUser();
   const navigate = useNavigate();
-  console.log(user);
+
   useEffect(() => {
     if (!user) {
+      alert("Please Sign In/Sign Up.");
       navigate("/login");
     }
   }, [user, navigate]);
