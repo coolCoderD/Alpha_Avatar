@@ -71,10 +71,10 @@ const Header = () => {
 
         {
           membership?
-          <div className="bg-white cursor-pointer w-full text-lg text-black px-6 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>
+          <div className="bg-white cursor-pointer w-full text-lg text-gray-700 px-6 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>
           :<div 
           onClick={()=>navigate('/memberships')}
-          className="bg-white cursor-pointer w-full text-lg text-black px-6 py-1 rounded-full ">Subscribe Now</div>
+          className="bg-white cursor-pointer w-full text-lg text-gray-700 px-6 py-1 rounded-full ">Subscribe Now</div>
         }
       {user ? (
           <>
@@ -90,7 +90,7 @@ const Header = () => {
 
             {isPopupVisible && (
               <div
-                className="mt-4 z-[50] p-[20px]"
+                className="mt-4  z-[50] p-[20px]"
                 style={{
                   position: "absolute",
                   backgroundColor: "white",
@@ -106,10 +106,10 @@ const Header = () => {
                 }}
               >
                 <h1 className="text-[#482BE7]">Hi {user.displayName}! Loving your avatars!?</h1>
-                <h1 className="text-black text-left text-xl font-semibold">{user.displayName}</h1>
-                <h1 className="text-black text-left text-sm -mt-3 font-light">{user.email}</h1>
+                <h1 className="text-gray-700 text-left text-xl font-semibold">{user.displayName}</h1>
+                <h1 className="text-gray-700 text-left text-sm -mt-3 font-light">{user.email}</h1>
 
-                <div className="flex flex-col text-black cursor-pointer gap-8">
+                <div className="flex flex-col text-gray-700 cursor-pointer gap-8">
                   {/* <div
                     className={`flex gap-8 px-10 py-2 cursor-pointer items-center z-20 ${active === 'profile' ? 'bg-[#BAC4FB]' : ''}`}
                     onClick={() => handleSetActive('profile')}
@@ -204,18 +204,18 @@ const Header = () => {
               >
                 {membership && !isMembershipPlanPage ? (
                   <>
-                    <div className="text-black flex gap-10 px-12 py-4">
+                    <div className="text-gray-700 flex gap-10 px-12 py-4">
                       <div>Membership Charges</div>
                       <div>C${membership.price || "N/A"}</div>
                     </div>
-                    <div className="text-black flex gap-10 px-12 py-4">
+                    <div className="text-gray-700 flex gap-10 px-12 py-4">
                       <div>Avatar Remaining</div>
                       <div>{membership.avatarCountRemaining || "N/A"}</div>
                     </div>
-                    <div className="bg-[#7186FF] border-t-2 border-[#7186FF]" />
+
                   </>
                 ) : (
-                  <div className="text-black">No subscription data available.</div>
+                  <div className="text-gray-700">No subscription data available.</div>
                 )}
 
 {

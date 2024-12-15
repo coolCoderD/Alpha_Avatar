@@ -29,7 +29,7 @@ const MembershipPlans = () => {
     }
 
     // Define success URL
-    const successUrl = `${window.location.origin}/avatar-creation?avatarCount=${avatarCount}&price=${price}&priceId=${priceId}&uid=${user.uid}`;
+    const successUrl = `${window.location.origin}/success?avatarCount=${avatarCount}&price=${price}&priceId=${priceId}&uid=${user.uid}`;
 
     // Redirect to Stripe Checkout
     const { error } = await stripe.redirectToCheckout({
@@ -51,36 +51,36 @@ const MembershipPlans = () => {
     setIsProcessing(false);
   };
 
-  // Simulated post-purchase handler for demonstration purposes
-  const handlePostPurchase = async () => {
-    if (!user || !priceId || !avatarCount) {
-      console.error("Missing required data for membership.");
-      return;
-    }
+  // // Simulated post-purchase handler for demonstration purposes
+  // const handlePostPurchase = async () => {
+  //   if (!user || !priceId || !avatarCount) {
+  //     console.error("Missing required data for membership.");
+  //     return;
+  //   }
   
-    const membershipData = {
-      avatarCountRemaining: avatarCount,
-      price: price,
-      priceId: priceId,
+  //   const membershipData = {
+  //     avatarCountRemaining: avatarCount,
+  //     price: price,
+  //     priceId: priceId,
 
-      createdAt: new Date(),
-      uid: user.uid,
-      name: user.displayName,
-    };
+  //     createdAt: new Date(),
+  //     uid: user.uid,
+  //     name: user.displayName,
+  //   };
   
-    try {
-      await storeMembershipData(user.uid, membershipData);
-      // console.log("Membership successfully stored with transaction ID:", transactionId);
-    } catch (error) {
-      console.error("Failed to store membership data:", error);
-    }
-  };
+  //   try {
+  //     await storeMembershipData(user.uid, membershipData);
+  //     // console.log("Membership successfully stored with transaction ID:", transactionId);
+  //   } catch (error) {
+  //     console.error("Failed to store membership data:", error);
+  //   }
+  // };
   
 
-  useEffect(() => {
-    // Simulate membership storage after successful payment (if triggered on success page)
-    handlePostPurchase();
-  }, [user, priceId, avatarCount]);
+  // useEffect(() => {
+  //   // Simulate membership storage after successful payment (if triggered on success page)
+  //   handlePostPurchase();
+  // }, [user, priceId, avatarCount]);
 
   return (
     <div className="flex flex-col bg-[#0b0c10] pt-6 min-h-screen text-white">
@@ -99,7 +99,15 @@ const MembershipPlans = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <button
+        {
+          membership? 
+          <button
+          onClick={handleCheckout}
+          disabled
+          className={`mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300  bg-gray-400 cursor-not-allowed `}
+        >
+          You already have membership
+        </button>:        <button
           onClick={handleCheckout}
           disabled={isProcessing}
           className={`mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 ${
@@ -110,6 +118,7 @@ const MembershipPlans = () => {
         >
           {isProcessing ? "Processing Payment..." : "Proceed to Pay"}
         </button>
+        }
       </div>
     </div>
   );
