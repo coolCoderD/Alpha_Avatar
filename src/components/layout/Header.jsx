@@ -225,7 +225,7 @@ const Header = () => {
             </>
           ) : (
             <a href="/sign-in" className="hover:text-white" style={{ fontSize: 20, fontWeight: 800 }}>
-              Signin
+              Sign in
             </a>
           )}
         </div>

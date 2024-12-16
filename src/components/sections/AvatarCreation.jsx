@@ -297,7 +297,7 @@ const AvatarCreation = () => {
           })}
         </Box>
       </Modal>
-      <div className="creation-div1 md:p-8 h-[100%]  rounded-2xl gap-4  w-[100%] md:w-[30%] flex flex-col items-center"
+      <div className="creation-div1 -translate-x-2  md:p-8 h-[100%]  rounded-2xl gap-4  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
           minWidth: "500px",
           minHeight: "300px"
