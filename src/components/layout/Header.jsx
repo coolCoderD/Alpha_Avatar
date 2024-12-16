@@ -42,8 +42,8 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
-      <div className="flex items-center justify-between w-full">
+    <header className="header"> 
+      <div className="flex items-center gap-2 justify-between w-full">
       <div
       className="gap-2"
         style={{
@@ -62,13 +62,13 @@ const Header = () => {
             />
           </Link>
         </div>
-        <Link to={`${user ? "/avatar-creation" : "/login"}`}>
-          <div className="logo">Alphavatar</div>
+        <Link className="hidden md:block " to={`${user ? "/avatar-creation" : "/login"}`}>
+          <div className=" logo">Alphavatar</div>
         </Link>
       </div>
 
 
-      <div className="flex justify-center -ml-24 items-center">
+      <div className="flex justify-center md:-ml-24 items-center">
       {
           membership?
           <div className="bg-white cursor-pointer text-lg text-gray-700 px-4 py-1 rounded-full ">You Have {membership.avatarCountRemaining} avatar left </div>

@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useSearchParams } from 'react-router-dom';
-import { db, setDoc, doc, updateDoc, getAuth } from '../../firebase'; // Import Firestore methods
+import { db, setDoc, doc, updateDoc, getAuth ,collection,addDoc} from '../../firebase'; // Import Firestore methods
 import { useUser } from "../../Context/UserContext.js";
 
 
@@ -182,6 +182,25 @@ const AvatarCreation = () => {
           }
         }
       }
+
+         // Store avatar name with userId and userName in Firebase
+
+    if (parsedUser && parsedUser.uid && parsedUser.displayName) {
+      console.log(parsedUser, parsedUser.uid, parsedUser.displayName);
+      const avatarData = {
+        userId: parsedUser.uid,
+        userName: parsedUser.displayName,
+        avatarName: avatarText,
+      
+        createdAt: new Date().toISOString(),
+      };
+
+      const avatarCollectionRef = collection(db, "avatars");
+      await addDoc(avatarCollectionRef, avatarData);
+      console.log("Avatar data stored in Firebase:", avatarData);
+    } else {
+      console.error("User information is missing for Firebase update.");
+    } 
     } catch (error) {
       console.error("Failed to generate avatar", error);
       setLoading(false);
