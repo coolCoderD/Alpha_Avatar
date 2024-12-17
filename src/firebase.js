@@ -31,13 +31,13 @@ import { getStorage } from "firebase/storage";
 
 // Firebase configuration object
 const firebaseConfig = {
-  apiKey: "AIzaSyCJ1u_EZPv86YAfI6J8IELyFFQKw2rZCFA",
-  authDomain: "alphavtar.firebaseapp.com",
-  projectId: "alphavtar",
-  storageBucket: "alphavtar.firebasestorage.app",
-  messagingSenderId: "1001615900919",
-  appId: "1:1001615900919:web:76c4cc7355176581b3d3f2",
-  measurementId: "G-ZYN12JG9Y9"
+  apiKey: "AIzaSyDXhwjSSt60vxIjKLajrgdkQbcDGFnr4Jo",
+  authDomain: "alphavatar-solutions-inc.firebaseapp.com",
+  projectId: "alphavatar-solutions-inc",
+  storageBucket: "alphavatar-solutions-inc.firebasestorage.app",
+  messagingSenderId: "527436815669",
+  appId: "1:527436815669:web:8621dca883418b86b5007c",
+  measurementId: "G-FEZW1RRE8L",
 };
 
 // Initialize Firebase app
