@@ -55,7 +55,7 @@ const Header = () => {
           }}
         >
           <div>
-            <Link to={`${user ? "/avatar-creation" : "/login"}`}>
+            <Link to='http://alphavatar.ca/'>
               <img
                 style={{ width: 50 }}
                 src="/assets/images/Layer_1.png"

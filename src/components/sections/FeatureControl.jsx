@@ -590,7 +590,7 @@ const storeDownloadData = async (userId, downloadData) => {
 
         </RadioGroup>
         {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
-          <div key={type} className="w-[70%] flex flex-row items-center justify-center px-2 py-3 items-start">
+          <div key={type} className="w-[70%] flex  flex-col xl:flex-row items-center justify-center px-2 py-3 ">
             <div className="gradient-text" style={{ fontSize: 18 }}>
               {type.toUpperCase()}:
             </div>
