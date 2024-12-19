@@ -654,7 +654,6 @@ input:-webkit-autofill:focus {
   display: inline-block;
   border-radius: 8px; /* Ensures the border itself is rounded */
   padding: 2px; /* Space for the gradient border */
-
   background: linear-gradient(180deg, #7186ff 0%, #f97689 100%);
 }
 

@@ -1,17 +1,17 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { 
-  auth, 
-  
-  createUserWithEmailAndPassword, 
-  sendEmailVerification, 
-  collection, 
-  setDoc,doc,firestore 
+import {
+  auth,
+
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  collection,
+  setDoc, doc, firestore
 } from "../../firebase";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from "@mui/material/Snackbar";
-import {getAuth,fetchSignInMethodsForEmail,RecaptchaVerifier,signInWithPhoneNumber} from '../../firebase'
+import { getAuth, fetchSignInMethodsForEmail, RecaptchaVerifier, signInWithPhoneNumber } from '../../firebase'
 
 // Styling remains the same as in your provided code...
 
@@ -28,15 +28,15 @@ const SignIn = () => {
   const [open, setOpen] = React.useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false); // Snackbar visibility state
   const [snackbarMessage, setSnackbarMessage] = useState(""); // Snackbar message state
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
-  console.log(auth,"auth")
-const[selectedValue,setSelectedValue]=useState('Select')
+  console.log(auth, "auth")
+  const [selectedValue, setSelectedValue] = useState('Select')
 
   // // Initialize Recaptcha on Component Mount
   // useEffect(() => {
@@ -91,28 +91,28 @@ const[selectedValue,setSelectedValue]=useState('Select')
   // };
   const verifyPhoneNumber = async (phoneNumber) => {
     try {
-      console.log(window.recaptchaVerifier,"here")
+      console.log(window.recaptchaVerifier, "here")
 
       // Step 1: Set up the Recaptcha verifier
       window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         size: 'invisible',
         callback: () => {
-            console.log('recaptcha resolved..')
+          console.log('recaptcha resolved..')
         }
-    });
+      });
 
       // Step 2: Trigger OTP
       const appVerifier = window.recaptchaVerifier;
 
       const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
       // Step 3: Ask for OTP input from the user
-      
-  
+
+
       // Continue your workflow here, like storing user details in Firestore
     } catch (error) {
       console.log("Error during phone number verification:", error);
       alert("OTP verification failed. Please try again.");
-    } 
+    }
   };
   const validateForm = () => {
     const errors = {};
@@ -135,20 +135,20 @@ const[selectedValue,setSelectedValue]=useState('Select')
       errors.email = "Invalid email format.";
     }
 
-  // Mobile number validation based on selected country
-  const countryMobileRegex = {
-    "+1": /^[2-9]\d{9}$/, // USA and Canada: 10 digits, first digit can't be 0 or 1
-    "+91": /^[6-9]\d{9}$/, // India: 10 digits, starts with 6-9
-    "+44": /^7\d{9}$/, // UK: 10 digits, starts with 7
-    "+61": /^4\d{8}$/, // Australia: 9 digits, starts with 4
-    "+81": /^\d{10}$/, // Japan: 10 digits, no specific starting digit
-  };
+    // Mobile number validation based on selected country
+    const countryMobileRegex = {
+      "+1": /^[2-9]\d{9}$/, // USA and Canada: 10 digits, first digit can't be 0 or 1
+      "+91": /^[6-9]\d{9}$/, // India: 10 digits, starts with 6-9
+      "+44": /^7\d{9}$/, // UK: 10 digits, starts with 7
+      "+61": /^4\d{8}$/, // Australia: 9 digits, starts with 4
+      "+81": /^\d{10}$/, // Japan: 10 digits, no specific starting digit
+    };
 
-  if (!mobile) {
-    errors.mobile = "Mobile number is required.";
-  } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
-    errors.mobile = `Invalid mobile number.`;
-  }
+    if (!mobile) {
+      errors.mobile = "Mobile number is required.";
+    } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
+      errors.mobile = `Invalid mobile number.`;
+    }
 
     // // Password validation
     // if (!password) {
@@ -163,18 +163,18 @@ const[selectedValue,setSelectedValue]=useState('Select')
 
   const handleRegisterUser = async (e) => {
     e.preventDefault();
-  
+
     // Validate form
     if (!validateForm()) {
       setLoading(false);
       return;
     }
-  
+
     setLoading(true);
-  
+
     // Initialize Firebase Auth
     const auth = getAuth();
-  
+
     try {
       // Check if email is already in use
       const signInMethods = await fetchSignInMethodsForEmail(auth, email);
@@ -211,7 +211,7 @@ const[selectedValue,setSelectedValue]=useState('Select')
           email: "An error occurred while verifying the email. Please try again.",
         }));
       }
-     
+
     }
   };
   const showSnackbar = (message, severity) => {
@@ -228,8 +228,8 @@ const[selectedValue,setSelectedValue]=useState('Select')
     }));
     setLoading(false); // Reset loading state when user changes input
   };
-  
-  
+
+
   // Handle Snackbar close
   const handleSnackbarClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -237,133 +237,150 @@ const[selectedValue,setSelectedValue]=useState('Select')
     }
     setSnackbarOpen(false);
   };
- 
+
   return (
     <div style={{ display: "flex", justifyContent: "center", backgroundColor: "#0b0c10", height: "100%" }}>
       <div style={{ zIndex: 0 }}>
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={snackbarOpen}
-        autoHideDuration={1000}
-        onClose={handleSnackbarClose}
-        message={snackbarMessage}
-      />
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          open={snackbarOpen}
+          autoHideDuration={1000}
+          onClose={handleSnackbarClose}
+          message={snackbarMessage}
+        />
         <div className="login-bg">
-        <div id="recaptcha-container"></div>
+          <div id="recaptcha-container"></div>
 
-          <div className="login-gradient-text flex justify-center items-center h-[80px]">Sign in</div>
+          <div className="login-gradient-text flex justify-center items-center h-[80px]">Sign up as new user</div>
           <div className=""></div>
           <div className="flex flex-col md:flex-row">
-          <div
+            <div
               className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]"
             >
               <img src="/assets/images/Layer_1_color.png" />
             </div>
             <div className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]">
-  
+
               <form className="flex flex-col gap-3 w-[75%]">
                 {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
-                    <input
-                      type="text"
-                      className="styled-input"
-                      placeholder="Enter First Name *"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      required
-                    />
-                                  {errors.firstName && <div style={{ color: "red" }}>{errors.firstName}</div>}
+                <input
+                  type="text"
+                  className="styled-input"
+                  placeholder="Enter First Name *"
+                  value={firstName}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^[a-zA-Z]*$/.test(value)) {
+                      setFirstName(value);
+                    }
+                  }}
+                  required
+                />
+                {errors.firstName && <div style={{ color: "red" }}>{errors.firstName}</div>}
 
-                    <input
-                      type="text"
-                      className="styled-input"
-                      placeholder="Enter Last Name *"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      required
-                    />
-                                  {errors.lastName && <div style={{ color: "red" }}>{errors.lastName}</div>}
+                <input
+                  type="text"
+                  className="styled-input"
+                  placeholder="Enter Last Name *"
+                  value={lastName}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^[a-zA-Z]*$/.test(value)) {
+                      setLastName(value);
+                    }
+                  }}
+                  required
+                />
 
-                    <input
-                      type="email"
-                      className="styled-input"
-                      placeholder="Enter Email ID *"
-                      value={email}
-                      onChange={handleEmailChange}
-                      required
+                {errors.lastName && <div style={{ color: "red" }}>{errors.lastName}</div>}
 
-                    />
-                      {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
+                <input
+                  type="email"
+                  className="styled-input"
+                  placeholder="Enter Email ID *"
+                  value={email}
+                  onChange={handleEmailChange}
+                  required
 
-                    <div className="dropdown-container">
-                    {selectedValue === 'Select' && (
-                      <div className="flex  absolute  ml-2 text-gray-400 justify-center items-center gap-2">
-                        
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 33 21">
-  <path d="M16.5 20.121L0.879 4.5l2.121-2.121L16.5 15.879 29.879 2.5l2.121 2.121-15.5 15.5z" fill="#fff"/>
-</svg>
-          </div>
-          
-        )}
-        
-                      <select  className="styled-dropdown " onChange={(e) => setSelectedValue(e.target.value)}
->
-          <option  className="text-black" value="Select"></option>
-          <option className="text-black" value="+1">🇺🇸 +1</option>
-  <option className="text-black" value="+91">🇮🇳 +91</option>
-  <option className="text-black" value="+44">🇬🇧 +44</option>
-  <option className="text-black" value="+61">🇦🇺 +61</option>
-  <option className="text-black" value="+81">🇯🇵 +81</option>
-  <option className="text-black" value="+81">+971</option>
-                      </select>
-                      <input
-                        type="tel"
-                        className="styled-input"
-                        placeholder="Mobile Number *"
-                        value={mobile}
-                        onChange={(e) => setMobile(e.target.value)}
-                        required
-                      />
+                />
+                {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
+
+                <div className="dropdown-container">
+                  {selectedValue === 'Select' && (
+                    <div className="flex  absolute  ml-2 text-gray-400 justify-center items-center gap-2">
+
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 33 21">
+                        <path d="M16.5 20.121L0.879 4.5l2.121-2.121L16.5 15.879 29.879 2.5l2.121 2.121-15.5 15.5z" fill="#fff" />
+                      </svg>
                     </div>
-                    {errors.mobile && <div style={{ color: "red" }}>{errors.mobile}</div>}
 
-                  
+                  )}
 
-<div className="flex flex-col md:flex-row">
-<div className="flex flex-row items-baseline gap-2 w-[100%]">
-                      <div className="small-dmsans text-left pt-2 flex">
-                        Already have an account?
-                      </div>
-                      <div
-                        onClick={() => navigate("/login")}
-                        style={{
-                          fontFamily: "DM Sans",
-                          fontSize: 16,
-                          color: "#FFF",
-                          textDecoration: "underline",
-                          marginLeft: 5,
-                          cursor: "pointer",
-                        }}
-                      >
-                        Login
-                      </div>
+                  <select className="styled-dropdown " onChange={(e) => setSelectedValue(e.target.value)}
+                  >
+                    <option className="text-black" value="Select"></option>
+                    <option className="text-black" value="+1">🇺🇸 +1</option>
+                    <option className="text-black" value="+91">🇮🇳 +91</option>
+                    <option className="text-black" value="+44">🇬🇧 +44</option>
+                    <option className="text-black" value="+61">🇦🇺 +61</option>
+                    <option className="text-black" value="+81">🇯🇵 +81</option>
+                    <option className="text-black" value="+81">+971</option>
+                  </select>
+                  <input
+                    type="tel"
+                    className="styled-input"
+                    placeholder="Mobile Number *"
+                    value={mobile}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value) && value.length <= 10) {
+                        setMobile(value);
+                      }
+                    }}
+                    maxLength={10} // Enforces max length in input field
+                    required
+                  />
+
+                </div>
+                {errors.mobile && <div style={{ color: "red" }}>{errors.mobile}</div>}
+
+
+
+                <div className="flex flex-col md:flex-row">
+                  <div className="flex flex-row items-baseline gap-2 w-[100%]">
+                    <div className="small-dmsans text-left pt-2 flex">
+                      Already have an account?
                     </div>
-</div>
-<div className="flex justify-center items-center">
-<div 
-    className={`flex rounded-md w-full mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg  ${
-    loading ? "opacity-50 cursor-not-allowed animate-pulse" : ""}`}>
-    <button className="flex-1 z-50 font-bold text-xl bg-[#7186FF] px-6 py-1 rounded-md"
-      onClick={(e) => handleRegisterUser(e)}
-      disabled={loading}
-    >
+                    <div
+                      onClick={() => navigate("/login")}
+                      style={{
+                        fontFamily: "DM Sans",
+                        fontSize: 16,
+                        color: "#FFF",
+                        textDecoration: "underline",
+                        marginLeft: 5,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Login
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-center items-center">
+                  <div
+                    className={`flex rounded-md w-full mx-9 bg-gradient-to-tr from-blue-500 to-pink-500 p-1 shadow-lg  ${loading ? "opacity-50 cursor-not-allowed animate-pulse" : ""}`}>
+                    <button className="flex-1 z-50 font-bold text-xl bg-[#7186FF] px-6 py-1 rounded-md"
+                      onClick={(e) => handleRegisterUser(e)}
+                      disabled={loading}
+                    >
 
-    {!loading ? "Next "  : "Processing..."}
-    </button>
-</div>
+                      {!loading ? "Next " : "Processing..."}
+                    </button>
+                  </div>
+                      
+                </div>
 
-</div>
-               
               </form>
             </div>
           </div>

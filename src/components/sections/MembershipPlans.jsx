@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../Context/UserContext";
 
 
@@ -11,6 +11,7 @@ const MembershipPlans = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const location = useLocation();
   const { priceId, price, avatarCount } = location.state || {};
+  const navigate = useNavigate();
 
   const handleCheckout = async () => {
     setIsProcessing(true);
@@ -124,11 +125,11 @@ const MembershipPlans = () => {
     )
   ) : (
     <button
-      onClick={handleCheckout}
-      disabled
-      className="mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 bg-gray-400 cursor-not-allowed"
+      onClick={()=>navigate('/login')}
+      
+      className="mt-3 w-96 px-6 py-3 font-bold text-lg rounded-lg shadow-md transition duration-300 gradient-border"
     >
-      Please Register First
+      Sign in 
     </button>
   )
 }

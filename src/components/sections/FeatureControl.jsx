@@ -20,7 +20,7 @@ const FeatureControlPanel = ({ features, imageURL,text }) => {
   const [loading, setLoading] = useState(false);
   const mainCanvasRef = useRef(null);
   const [featureStates, setFeatureStates] = useState(features);
-  const [selectedFeatureName, setSelectedFeatureName] = useState(null);
+  const [selectedFeatureName, setSelectedFeatureName] = useState('Face');
   const navigate = useNavigate();
 
   const {saveMembership,loadFromLocalStorage,saveToLocalStorage,clearLocalStorage,fetchUserAndMembership} = useUser();

@@ -183,7 +183,8 @@ const[errors,setErrors]=useState({})
                     className="small-dmsans  w-[100%] text-left"
                     style={{ textAlign: "left" }}
                   >
-                    Create a password to secure your account.
+                    Create a password to secure your account.<br/>
+                    A minimum of 6 characters required in the password
                   </div>
                 </div>
                 {errors && <div style={{ color: "red", marginBottom: "10px" }}>{errors?.password}</div>}

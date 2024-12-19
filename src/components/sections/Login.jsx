@@ -120,8 +120,8 @@ const OAuthButton = styled(Button)`
   background: #ffffff;
   color: #333;
   font-size: 14px;
-  height: 35px;
-  width: 250px;
+  height: 50px;
+  width: 300px;
   border-radius: 14px;
   &:hover {
     background: #f1f1f1;
@@ -360,7 +360,7 @@ const handleSnackbarClose = (event, reason) => {
       <div style={{   height: '100%', zIndex: 1 ,}}>
         <div className="login-bg ">
         <div className="login-gradient-text flex justify-center items-center h-[80px] " >
-                Login
+                Sign in 
             </div>
           {/* <div className="login-border " ></div> */}
           <div className="flex flex-col md:flex-row ">
@@ -372,7 +372,7 @@ const handleSnackbarClose = (event, reason) => {
             <div
               className="flex flex-col justify-center items-center w-[100%] md:w-[50%] p-[20px] gap-2"
             >
-              <OAuthButton onClick={handleGoogleSignIn}>
+              <OAuthButton className="" onClick={handleGoogleSignIn}>
                 <img src="/assets/images/image 12.png" alt="Google Logo" />
                 Sign in with Google
               </OAuthButton>
@@ -427,9 +427,9 @@ const handleSnackbarClose = (event, reason) => {
                 </div>
                 {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
 
-                <div className="flex flex-row justify-between gap-4 w-[100%]">
+                <div className="flex flex-row justify-center items-center gap-4 w-[100%]">
       <div
-        className={`gradient-border w-[80%] ${
+        className={`gradient-border w-[50%] ${
           activeButton === "login" ? "bg-[#7186FF]" : ""
         }`}
       >
@@ -442,7 +442,7 @@ const handleSnackbarClose = (event, reason) => {
           Sign in 
         </button>
       </div>
-      <div
+      {/* <div
         className={`gradient-border w-[80%] ${
           activeButton === "signIn" ? "bg-[#7186FF]" : ""
         }`}
@@ -455,13 +455,30 @@ const handleSnackbarClose = (event, reason) => {
         >
           Sign up
         </button>
-      </div>
+      </div> */}
     </div>
               </div>
 
-              <div className="small-dmsans text-[16px] text-opacity-50 text-left w-[75%] pt-2">
-                Don't remember password ?
-              </div>
+              <div className="flex flex-col md:flex-row">
+                  <div className="flex flex-row items-baseline gap-2 w-[100%]">
+                    <div className="small-dmsans text-left pt-2 flex">
+                      Don't have an account?
+                    </div>
+                    <div
+                      onClick={() => navigate("/sign-in")}
+                      style={{
+                        fontFamily: "DM Sans",
+                        fontSize: 16,
+                        color: "#FFF",
+                        textDecoration: "underline",
+                        marginLeft: 5,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Sign up
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
           {/* <div className="login-border " style={{ marginTop: 40 }}></div> */}

@@ -30,6 +30,9 @@ const style = {
 
 const AvatarCreation = () => {
 
+
+
+
   const { user, membership, saveMembership, loadFromLocalStorage, saveToLocalStorage } = useUser();
   console.log(membership);
   const [searchParams] = useSearchParams();
@@ -41,6 +44,7 @@ const AvatarCreation = () => {
   const [open, setOpen] = useState(false);
   const [features, setFeatures] = useState({});
   const [visibleCount, setVisibleCount] = useState(3);
+  
   // const membershipL = localStorage.getItem('memberships');
   const parsedMembership = membership;
   const navigate = useNavigate();
@@ -54,68 +58,15 @@ const AvatarCreation = () => {
   const priceId = searchParams.get('priceId');
   const userId = searchParams.get('uid');
 
-  // Function to store membership data in Firebase
-  // const storeUserDataInFirebase = async (userId, membershipData) => {
-  //   try {
-  //     const subscriptionDocRef = doc(db, 'memberships', userId);
-  //     await setDoc(subscriptionDocRef, {
-  //       ...membershipData,
-  //       createdAt: new Date(), // Add a timestamp
-  //     });
-  //     console.log(membershipData)
-  //     // saveMembership(membershipData)
-  //     console.log('Subscription data successfully stored.');
-  //   } catch (error) {
-  //     console.log('Error storing subscription data:', error);
-  //   }
-  // };
-
-  // Validate parameters before running the function
-  // if (avatarCount && price && priceId && userId) {
-  //   const membershipData = {
-  //     userId:parsedUser.uid,
-  //     membershipPlan: `${avatarCount} Plan`,
-  //     totalCount:parseInt(avatarCount,10),
-  //     name:parsedUser.displayName,
-  //     email:parsedUser.email,
-  //     avatarCountRemaining: parseInt(avatarCount, 10),
-  //     price: parseFloat(price),
-  //     priceId,
-  //     status: 'active',
-  //   };
-
-  //   storeUserDataInFirebase(userId, membershipData);
-  // } else {
-  //   console.log('Missing required parameters. Function will not run.');
-  // }
-
-
-  // useEffect(() => {
-  //   if (parsedUser && avatarCount && price && priceId) {
-  //     const membershipData = {
-  //       userId:parsedUser.uid,
-  //       membershipPlan: `${avatarCount} Plan`,
-  //       totalCount:parseInt(avatarCount,10),
-  //       name:parsedUser.displayName,
-  //       email:parsedUser.email,
-  //       avatarCountRemaining: parseInt(avatarCount, 10),
-  //       price: parseFloat(price),
-  //       priceId,
-  //       status: 'active',
-  //     };
 
 
 
-  //     console.log('Membership Data:', membershipData);
-
-  //     // Store data in Firebase
-  //     storeUserDataInFirebase(parsedUser.uid, membershipData);
-  //     saveMembership(membershipData);
-  //     saveToLocalStorage("memberships", membershipData);
-  //   } else {
-  //     console.warn('Membership data is incomplete or missing.');
-  //   }
-  // }, [avatarCount, price, priceId]);
+  useEffect(() => {
+    if (!avatarText) {
+      setAvatarUrl("");
+    }
+  }, [avatarText]);
+  
 
 
 
@@ -154,6 +105,7 @@ const AvatarCreation = () => {
 
     setAvatarUrl(undefined);
     setLoading(true);
+    setVisibleCount(3);
 
     try {
       const result = await generateAvatar(avatarText);
@@ -418,7 +370,7 @@ const AvatarCreation = () => {
         </div>
       ) : null}
 
-      {avatarUrl ? (
+      {avatarUrl && !loading ? (
         <div className=" flex flex-col items-center gap-5 justify-center">
           <div className=" w-[100%] md:w-[70%] mt-12  relative grid grid-cols-3 gap-12 mx-12 ">
             {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
