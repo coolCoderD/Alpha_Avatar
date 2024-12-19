@@ -65,6 +65,9 @@ const AvatarCreation = () => {
     if (!avatarText) {
       setAvatarUrl("");
     }
+    if(avatarUrl) {
+      setAvatarUrl("");
+    }
   }, [avatarText]);
   
 
@@ -158,6 +161,9 @@ const AvatarCreation = () => {
       setLoading(false);
     }
   };
+
+
+  console.log(avatarUrl)
 
 
   const loadMoreImages = () => {

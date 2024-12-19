@@ -133,7 +133,6 @@ const MembershipPlans = () => {
     </button>
   )
 }
-
       </div>
     </div>
   );

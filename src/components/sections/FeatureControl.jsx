@@ -20,7 +20,7 @@ const FeatureControlPanel = ({ features, imageURL,text }) => {
   const [loading, setLoading] = useState(false);
   const mainCanvasRef = useRef(null);
   const [featureStates, setFeatureStates] = useState(features);
-  const [selectedFeatureName, setSelectedFeatureName] = useState('Face');
+  const [selectedFeatureName, setSelectedFeatureName] = useState("Face");
   const navigate = useNavigate();
 
   const {saveMembership,loadFromLocalStorage,saveToLocalStorage,clearLocalStorage,fetchUserAndMembership} = useUser();
@@ -590,7 +590,7 @@ const storeDownloadData = async (userId, downloadData) => {
 
         </RadioGroup>
         {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
-          <div key={type} className="w-[70%] flex flex-col justify-center px-2 py-3 items-start">
+          <div key={type} className="w-[70%] flex flex-row items-center justify-center px-2 py-3 items-start">
             <div className="gradient-text" style={{ fontSize: 18 }}>
               {type.toUpperCase()}:
             </div>
