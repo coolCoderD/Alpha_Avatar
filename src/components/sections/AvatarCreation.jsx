@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 import { useSearchParams } from 'react-router-dom';
 import { db, setDoc, doc, updateDoc, getAuth ,collection,addDoc} from '../../firebase'; // Import Firestore methods
 import { useUser } from "../../Context/UserContext.js";
+import Header from "../layout/Header.jsx";
 
 
 
@@ -77,16 +78,18 @@ const AvatarCreation = () => {
   const handleClose = () => setOpen(false);
 
   const handleGenerateAvatar = async () => {
-    if (avatarText === "") {
+    const trimmedAvatarText = avatarText.trim();
+
+    if (trimmedAvatarText === "") {
       alert("Enter Name");
       return;
     }
-
-    const isValid = /^[a-zA-Z]{3,14}$/.test(avatarText);
-
+  
+    const isValid = /^[a-zA-Z]{3,14}$/.test(trimmedAvatarText);
+  
     if (!isValid) {
       alert(
-        "Invalid name. The name must only contain letters (a-z, A-Z), be at least 3 characters, and no more than 14 characters."
+        "Invalid name. The name must only contain letters (a-z, A-Z), be at least 3 characters, no more than 14 characters, and should not include spaces."
       );
       return;
     }
@@ -207,6 +210,8 @@ const AvatarCreation = () => {
   ];
 
   return (
+    <>
+    <Header/>
     <section
       className=" py-10 overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
       style={{ alignItems: "flex-start" }}
@@ -462,6 +467,7 @@ const AvatarCreation = () => {
           );
         })}*/}
     </section>
+    </>
   );
 };
 

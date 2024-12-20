@@ -11,6 +11,7 @@ import {
 } from "../../firebase";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Header2 from "../layout/Header2";
 
 
 const Button = styled.button`
@@ -150,6 +151,8 @@ const[errors,setErrors]=useState({})
   
   
   return (
+    <>
+    <Header2/>
     <div
       style={{
         display: "flex",
@@ -270,6 +273,7 @@ const[errors,setErrors]=useState({})
 )}
 
     </div>
+    </>
   );
 };
 

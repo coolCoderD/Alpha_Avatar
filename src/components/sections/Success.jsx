@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import { useUser } from '../../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import Header from '../layout/Header';
 
 const Success = () => {
       const { user, storeMembershipData,membership } = useUser();
@@ -43,6 +44,8 @@ const Success = () => {
         handlePaymentSuccess();
       }, [storeMembershipData, user]); // Add dependencies
   return (
+    <>
+    <Header/>
     <div>
         <div className="flex items-center justify-center">
       <div className=" p-6  md:mx-auto">
@@ -66,6 +69,7 @@ const Success = () => {
     </div>
   </div>
     </div>
+    </>
   )
 }
 

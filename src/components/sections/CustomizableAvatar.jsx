@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../common/Button";
 import React, { useEffect, useRef } from "react";
+import Header from "../layout/Header";
 
 const AvatarCreation = () => {
   const carouselRef1 = useRef(null);
@@ -67,6 +68,8 @@ const navigate=useNavigate()
   }, []);
 
   return (
+    <>
+    <Header/>
 <section className="hero-section gradient-img">
   <div className="gradient-text">
     Create some awesome avatars for your near & dear ones!
@@ -134,6 +137,7 @@ const navigate=useNavigate()
     </nav>
   </footer>
 </section>
+</>
 );
   }
 

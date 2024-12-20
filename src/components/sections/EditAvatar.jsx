@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import FeatureControlPanel from "./FeatureControl";
+import Header from "../layout/Header";
 
 const EditAvatar = () => {
   const [features, setFeatures] = useState([]);
@@ -27,9 +28,12 @@ const EditAvatar = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
+    <>
+    <Header></Header>
     <section className="py-10 px-4 flex flex-col md:flex-row w-full">
       <FeatureControlPanel features={features} imageURL={imageURL} text={text} />
     </section>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { db,doc,setDoc,auth } from "../../firebase"; // 
 import {getAuth,fetchSignInMethodsForEmail,RecaptchaVerifier,signInWithPhoneNumber} from '../../firebase'
+import Header2 from "../layout/Header2";
 
 const Container = styled.div`
   display: flex;
@@ -267,6 +268,8 @@ const OtpVerification = () => {
   };
 
   return (
+    <>
+    <Header2/>
     <div
       style={{
         display: "flex",
@@ -378,6 +381,7 @@ onClick={()=>{handleVerifyOtp()}}
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -18,6 +18,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 
 import Typography from "@mui/material/Typography";
+import Header2 from "../layout/Header2.jsx";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -121,7 +122,7 @@ const OAuthButton = styled(Button)`
   color: #333;
   font-size: 14px;
   height: 50px;
-  width: 300px;
+  width: 250px;
   border-radius: 14px;
   &:hover {
     background: #f1f1f1;
@@ -332,6 +333,8 @@ const handleSnackbarClose = (event, reason) => {
   setSnackbarOpen(false);
 };
   return (
+    <>
+    <Header2/>
     <div className="">
     <div
       className="flex  justify-center "
@@ -487,6 +490,7 @@ const handleSnackbarClose = (event, reason) => {
       </div>
     </div>
     </div>
+    </>
   );
 };
 

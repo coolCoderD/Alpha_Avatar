@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../firebase"; // Adjust path as necessary
+import Header from "../layout/Header";
 
 
 
@@ -27,6 +28,8 @@ const Memberships = () => {
     
 
   return (
+    <>
+    <Header/>
     <div
       style={{
         display: "flex",
@@ -125,7 +128,7 @@ const Memberships = () => {
        
       </div>
 
-      <div className="flex flex-col md:flex-row  items-center justify-center gap-[100px] ">
+      <div className="flex flex-col xl:flex-row  items-center justify-center gap-[100px] ">
         {
           [{avatar:10,
             price:50,
@@ -196,6 +199,7 @@ const Memberships = () => {
        
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../firebase"; // Adjust path as necessary
+import Header from "../layout/Header";
+import Header2 from "../layout/Header2";
 
 // Styling remains the same as in your provided code...
 
@@ -16,6 +18,8 @@ const Description = () => {
   };
 
   return (
+    <>
+    <Header2/>
     <div className=""
       style={{
         display: "flex",
@@ -86,6 +90,7 @@ const Description = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

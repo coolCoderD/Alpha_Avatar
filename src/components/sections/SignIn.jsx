@@ -12,6 +12,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from "@mui/material/Snackbar";
 import { getAuth, fetchSignInMethodsForEmail, RecaptchaVerifier, signInWithPhoneNumber } from '../../firebase'
+import Header2 from "../layout/Header2";
 
 // Styling remains the same as in your provided code...
 
@@ -239,6 +240,8 @@ const SignIn = () => {
   };
 
   return (
+    <>
+    <Header2/>
     <div style={{ display: "flex", justifyContent: "center", backgroundColor: "#0b0c10", height: "100%" }}>
       <div style={{ zIndex: 0 }}>
         <Snackbar
@@ -390,6 +393,7 @@ const SignIn = () => {
 
       <div id="recaptcha-container"></div> {/* Container for reCAPTCHA */}
     </div>
+    </>
   );
 };
 

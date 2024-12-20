@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../Context/UserContext";
+import Header from "../layout/Header";
 
 
 const stripePromise = loadStripe("pk_test_51QUNISEuYCed5kKZTwu6lUQzZaMEWAdEpuTMjmbGv63GsXbZ9Uw30RSZwR7CR5eNm3xw7w3K4nzLDYKg3RZkndjL00DrM2qrdS");
@@ -84,6 +85,8 @@ const MembershipPlans = () => {
   // }, [user, priceId, avatarCount]);
 
   return (
+    <>
+    <Header/>
     <div className="flex flex-col bg-[#0b0c10] pt-6 min-h-screen text-white">
       <div className="text-center mb-6">
         <h1 className="gradient-text text-6xl font-bold">Hello, {user?.displayName || ""}</h1><br/>
@@ -135,6 +138,7 @@ const MembershipPlans = () => {
 }
       </div>
     </div>
+    </>
   );
 };
 
