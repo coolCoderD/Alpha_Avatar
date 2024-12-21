@@ -143,7 +143,34 @@ const SignIn = () => {
       "+44": /^7\d{9}$/, // UK: 10 digits, starts with 7
       "+61": /^4\d{8}$/, // Australia: 9 digits, starts with 4
       "+81": /^\d{10}$/, // Japan: 10 digits, no specific starting digit
+      "+49": /^1[5-7]\d{8}$/, // Germany: 10 digits, starts with 15, 16, or 17
+      "+33": /^6\d{8}|7\d{8}$/, // France: 9 digits, starts with 6 or 7
+      "+39": /^3\d{9}$/, // Italy: 10 digits, starts with 3
+      "+86": /^[1][3-9]\d{9}$/, // China: 11 digits, starts with 13-19
+      "+55": /^[1-9]\d{10}$/, // Brazil: 11 digits, starts with 1-9
+      "+7": /^[3479]\d{9}$/, // Russia: 10 digits, starts with 3, 4, 7, or 9
+      "+27": /^[6-8]\d{8}$/, // South Africa: 9 digits, starts with 6-8
+      "+34": /^[6-7]\d{8}$/, // Spain: 9 digits, starts with 6 or 7
+      "+64": /^2\d{8,9}$/, // New Zealand: 9 or 10 digits, starts with 2
+      "+32": /^[4]\d{8}$/, // Belgium: 9 digits, starts with 4
+      "+20": /^[1]\d{9}$/, // Egypt: 10 digits, starts with 1
+      "+82": /^[1]\d{9}$/, // South Korea: 10 digits, starts with 1
+      "+60": /^[1-9]\d{7,9}$/, // Malaysia: 8-10 digits
+      "+63": /^[9]\d{9}$/, // Philippines: 10 digits, starts with 9
+      "+92": /^[3]\d{9}$/, // Pakistan: 10 digits, starts with 3
+      "+62": /^[8]\d{9,10}$/, // Indonesia: 10-11 digits, starts with 8
+      "+65": /^[89]\d{7}$/, // Singapore: 8 digits, starts with 8 or 9
+      "+254": /^[17]\d{8}$/, // Kenya: 10 digits, starts with 1 or 7
+      "+971": /^[5]\d{8}$/ // UAE: 9 digits, starts with 5
+
     };
+    
+    if (!mobile) {
+      errors.mobile = "Mobile number is required.";
+    } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
+      errors.mobile = `Invalid mobile number for ${selectedValue}.`;
+    }
+    
 
     if (!mobile) {
       errors.mobile = "Mobile number is required.";
@@ -322,13 +349,31 @@ const SignIn = () => {
 
                   <select className="styled-dropdown " onChange={(e) => setSelectedValue(e.target.value)}
                   >
-                    <option className="text-black" value="Select"></option>
-                    <option className="text-black" value="+1">🇺🇸 +1</option>
-                    <option className="text-black" value="+91">🇮🇳 +91</option>
-                    <option className="text-black" value="+44">🇬🇧 +44</option>
-                    <option className="text-black" value="+61">🇦🇺 +61</option>
-                    <option className="text-black" value="+81">🇯🇵 +81</option>
-                    <option className="text-black" value="+81">+971</option>
+ <option value="Select" className="text-black"></option>
+  <option value="+1" className="text-black">🇺🇸 +1 (USA/Canada)</option>
+  <option value="+91" className="text-black">🇮🇳 +91 (India)</option>
+  <option value="+44" className="text-black">🇬🇧 +44 (UK)</option>
+  <option value="+61" className="text-black">🇦🇺 +61 (Australia)</option>
+  <option value="+81" className="text-black">🇯🇵 +81 (Japan)</option>
+  <option value="+49" className="text-black">🇩🇪 +49 (Germany)</option>
+  <option value="+33" className="text-black">🇫🇷 +33 (France)</option>
+  <option value="+39" className="text-black">🇮🇹 +39 (Italy)</option>
+  <option value="+86" className="text-black">🇨🇳 +86 (China)</option>
+  <option value="+55" className="text-black">🇧🇷 +55 (Brazil)</option>
+  <option value="+7" className="text-black">🇷🇺 +7 (Russia)</option>
+  <option value="+27" className="text-black">🇿🇦 +27 (South Africa)</option>
+  <option value="+34" className="text-black">🇪🇸 +34 (Spain)</option>
+  <option value="+64" className="text-black">🇳🇿 +64 (New Zealand)</option>
+  <option value="+32" className="text-black">🇧🇪 +32 (Belgium)</option>
+  <option value="+20" className="text-black">🇪🇬 +20 (Egypt)</option>
+  <option value="+82" className="text-black">🇰🇷 +82 (South Korea)</option>
+  <option value="+60" className="text-black">🇲🇾 +60 (Malaysia)</option>
+  <option value="+63" className="text-black">🇵🇭 +63 (Philippines)</option>
+  <option value="+92" className="text-black">🇵🇰 +92 (Pakistan)</option>
+  <option value="+62" className="text-black">🇮🇩 +62 (Indonesia)</option>
+  <option value="+65" className="text-black">🇸🇬 +65 (Singapore)</option>
+  <option value="+254" className="text-black">🇰🇪 +254 (Kenya)</option>
+  <option value="+971" className="text-black">🇦🇪 +971 (UAE)</option>
                   </select>
                   <input
                     type="tel"
