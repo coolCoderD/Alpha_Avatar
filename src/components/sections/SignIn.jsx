@@ -350,30 +350,30 @@ const SignIn = () => {
                   <select className="styled-dropdown " onChange={(e) => setSelectedValue(e.target.value)}
                   >
  <option value="Select" className="text-black"></option>
-  <option value="+1" className="text-black">🇺🇸 +1 (USA/Canada)</option>
-  <option value="+91" className="text-black">🇮🇳 +91 (India)</option>
-  <option value="+44" className="text-black">🇬🇧 +44 (UK)</option>
-  <option value="+61" className="text-black">🇦🇺 +61 (Australia)</option>
-  <option value="+81" className="text-black">🇯🇵 +81 (Japan)</option>
-  <option value="+49" className="text-black">🇩🇪 +49 (Germany)</option>
-  <option value="+33" className="text-black">🇫🇷 +33 (France)</option>
-  <option value="+39" className="text-black">🇮🇹 +39 (Italy)</option>
-  <option value="+86" className="text-black">🇨🇳 +86 (China)</option>
-  <option value="+55" className="text-black">🇧🇷 +55 (Brazil)</option>
-  <option value="+7" className="text-black">🇷🇺 +7 (Russia)</option>
-  <option value="+27" className="text-black">🇿🇦 +27 (South Africa)</option>
-  <option value="+34" className="text-black">🇪🇸 +34 (Spain)</option>
-  <option value="+64" className="text-black">🇳🇿 +64 (New Zealand)</option>
-  <option value="+32" className="text-black">🇧🇪 +32 (Belgium)</option>
-  <option value="+20" className="text-black">🇪🇬 +20 (Egypt)</option>
-  <option value="+82" className="text-black">🇰🇷 +82 (South Korea)</option>
-  <option value="+60" className="text-black">🇲🇾 +60 (Malaysia)</option>
-  <option value="+63" className="text-black">🇵🇭 +63 (Philippines)</option>
-  <option value="+92" className="text-black">🇵🇰 +92 (Pakistan)</option>
-  <option value="+62" className="text-black">🇮🇩 +62 (Indonesia)</option>
-  <option value="+65" className="text-black">🇸🇬 +65 (Singapore)</option>
-  <option value="+254" className="text-black">🇰🇪 +254 (Kenya)</option>
-  <option value="+971" className="text-black">🇦🇪 +971 (UAE)</option>
+  <option value="+1" className="text-black">🇺🇸 +1</option>
+  <option value="+91" className="text-black">🇮🇳 +91</option>
+  <option value="+44" className="text-black">🇬🇧 +44 </option>
+  <option value="+61" className="text-black">🇦🇺 +61 </option>
+  <option value="+81" className="text-black">🇯🇵 +81 </option>
+  <option value="+49" className="text-black">🇩🇪 +49 </option>
+  <option value="+33" className="text-black">🇫🇷 +33 </option>
+  <option value="+39" className="text-black">🇮🇹 +39 </option>
+  <option value="+86" className="text-black">🇨🇳 +86 </option>
+  <option value="+55" className="text-black">🇧🇷 +55 </option>
+  <option value="+7" className="text-black">🇷🇺 +7 </option>
+  <option value="+27" className="text-black">🇿🇦 +27</option>
+  <option value="+34" className="text-black">🇪🇸 +34 </option>
+  <option value="+64" className="text-black">🇳🇿 +64</option>
+  <option value="+32" className="text-black">🇧🇪 +32 </option>
+  <option value="+20" className="text-black">🇪🇬 +20 </option>
+  <option value="+82" className="text-black">🇰🇷 +82 </option>
+  <option value="+60" className="text-black">🇲🇾 +60 </option>
+  <option value="+63" className="text-black">🇵🇭 +63 </option>
+  <option value="+92" className="text-black">🇵🇰 +92 </option>
+  <option value="+62" className="text-black">🇮🇩 +62 </option>
+  <option value="+65" className="text-black">🇸🇬 +65 </option>
+  <option value="+254" className="text-black">🇰🇪 +254 </option>
+  <option value="+971" className="text-black">🇦🇪 +971 </option>
                   </select>
                   <input
                     type="tel"
