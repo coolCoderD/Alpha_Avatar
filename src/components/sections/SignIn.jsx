@@ -36,7 +36,7 @@ const SignIn = () => {
   const handleOpen = () => {
     setOpen(true);
   };
-  console.log(auth, "auth")
+
   const [selectedValue, setSelectedValue] = useState('+1')
 
   // // Initialize Recaptcha on Component Mount
@@ -193,6 +193,7 @@ const SignIn = () => {
   };
 
   const handleRegisterUser = async (e) => {
+    console.log(email);
     e.preventDefault();
 
     // Validate form
@@ -208,7 +209,8 @@ const SignIn = () => {
 
     try {
       // Check if email is already in use
-      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email.trim());
+      console.log(signInMethods, "signInMethods")
       if (signInMethods.length > 0) {
         setErrors((prevErrors) => ({
           ...prevErrors,
