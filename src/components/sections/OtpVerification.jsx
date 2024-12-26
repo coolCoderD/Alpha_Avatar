@@ -286,11 +286,11 @@ const OtpVerification = () => {
 
 
 
-          <div className="flex flex-col md:flex-row ">
+          <div className="flex flex-col justify-center items-center md:flex-row ">
           <div
-              className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]"
+              className="flex justify-center items-center w-[100%] md:w-[30%] p-[10px]"
             >
-              {/* <img src="/assets/images/Layer_1_color.png" /> */}
+              <img src="/assets/images/Layer_1_color.png" />
             </div>
             <div className="flex flex-col justify-center  items-center w-[100%] md:w-[50%] p-[20px]">
               <div className=" w-[[100%] md:w-[70%]">
