@@ -260,20 +260,20 @@ const AvatarCreation = () => {
           })}
         </Box>
       </Modal>
-      <div className="creation-div1 -translate-x-2  md:p-8 h-[100%]  rounded-2xl gap-4  w-[100%] md:w-[30%] flex flex-col items-center"
-        style={{
-          minWidth: "500px",
-          minHeight: "300px"
-        }}
+      <div className=" md:creation-div1  md:p-8 h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
+        // style={{
+        //   minWidth: "500px",
+        //   minHeight: "300px"
+        // }}
       >
-        <div className=" mt-12  text-2xl">Generate Avatars !</div>
+        <div className=" mt-20 md:mt-1 text-2xl">Generate Avatars !</div>
         {
           !membership && <div className="text-center text-gray-500 mt-2">
             Free Avatars Left: {freeAvatarCount}/3
           </div>
         }
 
-        <div className="gradient-border w-[100%]">
+        <div className="gradient-border w-[80%] md:w-[100%]">
           <input
             onChange={(e) => {
               setAvatarText(e.target.value);
@@ -284,7 +284,7 @@ const AvatarCreation = () => {
         </div>
         {
           membership ?
-            <div className=" flex  justify-center items-center">
+            <div className=" flex  justify-center items-center w-[40%]">
               <button
                 onClick={() => {
                   if (!loading) handleGenerateAvatar();
@@ -295,6 +295,7 @@ const AvatarCreation = () => {
                   fontSize: 16,
                   width: "100%",
                   height: 55,
+             
                 }}
                 className={`create-your-avatar-btn ${loading
                     ? "opacity-50 cursor-not-allowed animate-pulse"
@@ -348,7 +349,7 @@ const AvatarCreation = () => {
 
         <div className="hidden md:block">
           <div className="gradient-border mr-20  md:mr-0 w-[100%]">
-            <div className="styled-input flex flex-col gap-4 ">
+            <div className="styled-input flex flex-col gap-2 ">
               {info.map(({ imageSrc, text, imageClass, textClass = "ml-12" }, index) => (
                 <div key={index} className="flex flex-row relative justify-center items-center gap-1">
                   <img src={imageSrc} className={`w-[10%] absolute left-0 ${imageClass}`} />
@@ -382,7 +383,7 @@ const AvatarCreation = () => {
       ) : null}
 
       {avatarUrl && !loading ? (
-        <div className=" flex flex-col items-center gap-5 justify-center">
+        <div className=" flex flex-col items-center gap-2 justify-center">
           <div className=" w-[100%] md:w-[70%] mt-12  relative grid grid-cols-3 gap-12 mx-12 ">
             {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
               return (

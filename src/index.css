@@ -34,3 +34,12 @@ html, body, #app, #app>div {
 
 
 
+/* Only apply to elements that have horizontal scrolling */
+.scrollable {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

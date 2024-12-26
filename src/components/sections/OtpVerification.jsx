@@ -199,7 +199,7 @@ const OtpVerification = () => {
   setConfirmationResult(confirmationResult)
       // Continue your workflow here, like storing user details in Firestore
     } catch (error) {
-      console.log("Error during phone number verification:", error);
+      console.error("Error during phone number verification:", error);
       alert("OTP verification failed. Please try again.");
     } 
   };
@@ -290,10 +290,10 @@ const OtpVerification = () => {
           <div
               className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]"
             >
-              <img src="/assets/images/Layer_1_color.png" />
+              {/* <img src="/assets/images/Layer_1_color.png" /> */}
             </div>
             <div className="flex flex-col justify-center  items-center w-[100%] md:w-[50%] p-[20px]">
-              <div className="w-[70%]">
+              <div className=" w-[[100%] md:w-[70%]">
               <div className=" w-[100%] bigText  md:text-left mt-10">
                 OTP Verification
               </div>
@@ -315,10 +315,9 @@ const OtpVerification = () => {
 
           <div id="recaptcha-container"></div>
         </div>
-              <div className="small-dmsans  w-[100%] ml-2 ">
-                Enter the six-digit code sent to your email <br /> and mobile
-                number.
-              </div>
+        <div className="text-[14px] sm:text-base md:text-lg lg:text-xl w-full ">
+  Enter the six-digit code sent to your email <br /> and mobile number.
+</div>
               <div className="flex flex-wrap gap-2 mt-10 justify-center md:justify-start w-full">
   {[...Array(6)].map((_, index) => (
     <div key={index} className="gradient-border-otp ">

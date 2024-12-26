@@ -36,14 +36,14 @@ const Memberships = () => {
         justifyContent: "center",
         flexDirection: "column",
         backgroundColor: "#0b0c10",
-        gap: 35,
+        gap: 15,
         padding:10,
         
       }}
     >
       <div className="flex flex-col">
         {/* <div className="text-[#7186FF] text-[13px] text-center">PRICING</div> */}
-        <div className="gradient-text-m text-4xl mb-4  p-0">Simple Memberships </div>
+        <div className="gradient-text-m text-4xl  p-0">Simple Memberships </div>
       </div>
       <div className="flex flex-col">
         <div className="small-text ">Use the Startup Framework for free. </div>
@@ -81,7 +81,7 @@ const Memberships = () => {
               className="gradient-border  w-[25%] p-[8px] "
               style={{ padding: "3px", width: 360 }}
             >
-              <div className="styledMemberships  flex flex-col items-center gap-5">
+              <div className="styledMemberships  flex flex-col items-center gap-3">
                 <div className="flex flex-col">
                   <div className=" gradient-text p-0" style={{ fontSize: 13 }}>
                     Download
@@ -152,7 +152,7 @@ const Memberships = () => {
             
             }}
             >
-              <div className="styledMemberships  flex flex-col items-center gap-5">
+              <div className="styledMemberships  flex flex-col items-center gap-3">
                 <div className="flex flex-col">
                   <div className="gradient-text p-0" style={{ fontSize: 13 }}>
                     Download

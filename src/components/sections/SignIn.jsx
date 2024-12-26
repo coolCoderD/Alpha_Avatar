@@ -37,7 +37,7 @@ const SignIn = () => {
     setOpen(true);
   };
   console.log(auth, "auth")
-  const [selectedValue, setSelectedValue] = useState('Select')
+  const [selectedValue, setSelectedValue] = useState('+1')
 
   // // Initialize Recaptcha on Component Mount
   // useEffect(() => {
@@ -170,12 +170,15 @@ const SignIn = () => {
     } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
       errors.mobile = `Invalid mobile number for ${selectedValue}.`;
     }
-    
+    if(!selectedValue){
+      errors.mobile = `Please select Country Code.`;
+
+    }
 
     if (!mobile) {
       errors.mobile = "Mobile number is required.";
     } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
-      errors.mobile = `Invalid mobile number.`;
+      errors.mobile = `IPlease select Country Code.`;
     }
 
     // // Password validation
@@ -347,33 +350,33 @@ const SignIn = () => {
 
                   )}
 
-                  <select className="styled-dropdown " onChange={(e) => setSelectedValue(e.target.value)}
+                  <select className="styled-dropdown " value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}
                   >
- <option value="Select" className="text-black"></option>
-  <option value="+1" className="text-black">🇺🇸 +1</option>
-  <option value="+91" className="text-black">🇮🇳 +91</option>
-  <option value="+44" className="text-black">🇬🇧 +44 </option>
-  <option value="+61" className="text-black">🇦🇺 +61 </option>
-  <option value="+81" className="text-black">🇯🇵 +81 </option>
-  <option value="+49" className="text-black">🇩🇪 +49 </option>
-  <option value="+33" className="text-black">🇫🇷 +33 </option>
-  <option value="+39" className="text-black">🇮🇹 +39 </option>
-  <option value="+86" className="text-black">🇨🇳 +86 </option>
-  <option value="+55" className="text-black">🇧🇷 +55 </option>
-  <option value="+7" className="text-black">🇷🇺 +7 </option>
-  <option value="+27" className="text-black">🇿🇦 +27</option>
-  <option value="+34" className="text-black">🇪🇸 +34 </option>
-  <option value="+64" className="text-black">🇳🇿 +64</option>
-  <option value="+32" className="text-black">🇧🇪 +32 </option>
-  <option value="+20" className="text-black">🇪🇬 +20 </option>
-  <option value="+82" className="text-black">🇰🇷 +82 </option>
-  <option value="+60" className="text-black">🇲🇾 +60 </option>
-  <option value="+63" className="text-black">🇵🇭 +63 </option>
-  <option value="+92" className="text-black">🇵🇰 +92 </option>
-  <option value="+62" className="text-black">🇮🇩 +62 </option>
-  <option value="+65" className="text-black">🇸🇬 +65 </option>
-  <option value="+254" className="text-black">🇰🇪 +254 </option>
-  <option value="+971" className="text-black">🇦🇪 +971 </option>
+ <option value="+1" className="text-black">🇺🇸 US +1</option>
+<option value="+91" className="text-black">🇮🇳 IN +91</option>
+<option value="+44" className="text-black">🇬🇧 UK +44</option>
+<option value="+61" className="text-black">🇦🇺 AU +61</option>
+<option value="+81" className="text-black">🇯🇵 JP +81</option>
+<option value="+49" className="text-black">🇩🇪 DE +49</option>
+<option value="+33" className="text-black">🇫🇷 FR +33</option>
+<option value="+39" className="text-black">🇮🇹 IT +39</option>
+<option value="+86" className="text-black">🇨🇳 CN +86</option>
+<option value="+55" className="text-black">🇧🇷 BR +55</option>
+<option value="+7" className="text-black">🇷🇺 RU +7</option>
+<option value="+27" className="text-black">🇿🇦 ZA +27</option>
+<option value="+34" className="text-black">🇪🇸 ES +34</option>
+<option value="+64" className="text-black">🇳🇿 NZ +64</option>
+<option value="+32" className="text-black">🇧🇪 BE +32</option>
+<option value="+20" className="text-black">🇪🇬 EG +20</option>
+<option value="+82" className="text-black">🇰🇷 KR +82</option>
+<option value="+60" className="text-black">🇲🇾 MY +60</option>
+<option value="+63" className="text-black">🇵🇭 PH +63</option>
+<option value="+92" className="text-black">🇵🇰 PK +92</option>
+<option value="+62" className="text-black">🇮🇩 ID +62</option>
+<option value="+65" className="text-black">🇸🇬 SG +65</option>
+<option value="+254" className="text-black">🇰🇪 KE +254</option>
+<option value="+971" className="text-black">🇦🇪 AE +971</option>
+
                   </select>
                   <input
                     type="tel"

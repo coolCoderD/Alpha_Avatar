@@ -174,7 +174,7 @@ const[errors,setErrors]=useState({})
               <img src="/assets/images/Layer_1_color.png" />
             </div>
             <div className="flex justify-center items-center w-[100%] md:w-[50%] p-[20px]">
-              <div className="flex flex-col w-[60%] gap-4">
+              <div className="flex flex-col w-[100%]  md:w-[60%] gap-4">
                 <div>
                   <div
                     className=" w-[100%] bigText"
