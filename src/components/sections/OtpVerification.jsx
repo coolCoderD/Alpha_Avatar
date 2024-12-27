@@ -264,7 +264,7 @@ const OtpVerification = () => {
     setTimeLeft(30); // Reset the timer to 30 seconds
 
     // Simulate OTP resend action
-    verifyPhoneNumber(phoneNumber);
+    verifyPhoneNumber();
   };
 
   return (
@@ -315,10 +315,10 @@ const OtpVerification = () => {
 
           <div id="recaptcha-container"></div>
         </div>
-        <div className="text-[14px] sm:text-base md:text-lg lg:text-xl w-full ">
-  Enter the six-digit code sent to your email <br /> and mobile number.
+        <div className="text-[13px] ">
+  Enter the six-digit code sent to your email  and mobile number.
 </div>
-              <div className="flex flex-wrap gap-2 mt-10 justify-center md:justify-start w-full">
+              <div className="flex flex-nowrap gap-2 mt-10 justify-center md:justify-start w-full">
   {[...Array(6)].map((_, index) => (
     <div key={index} className="gradient-border-otp ">
 <input
@@ -361,9 +361,9 @@ const OtpVerification = () => {
 </div> */}
 
               </div>
-<div className="flex justify-end">
+<div className="flex ">
 
-<div className="gradient-border w-[60%] mt-10">
+<div className="gradient-border  w-[60%] mt-10">
                 <button
 onClick={()=>{handleVerifyOtp()}}
                   className="flex-1 z-50 font-bold text-xl bg-[#7186FF] px-6 py-1 w-full rounded-md"
