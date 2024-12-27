@@ -122,7 +122,7 @@ const[errors,setErrors]=useState({})
   
       console.log("User registered successfully.");
       setLoading(false);
-      setSuccess("Registration successful! Please verify your email.");
+      setSuccess("Registration successful!");
       setTimeout(() => {
         navigate("/description", { state });
       }, 1500);

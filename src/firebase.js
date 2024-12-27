@@ -21,11 +21,11 @@ import {
   collection, 
   query, 
   where, 
-  getDocs, 
   updateDoc, 
   deleteDoc, 
   addDoc ,
-  arrayUnion
+  arrayUnion,
+  getDocs
 } from 'firebase/firestore';
 import { getStorage } from "firebase/storage";
 
@@ -79,5 +79,7 @@ export {
   fetchSignInMethodsForEmail,
   updateDoc,
   deleteDoc,
-  arrayUnion
+  arrayUnion,
+  query,
+  where,
 };

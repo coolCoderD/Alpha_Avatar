@@ -6,7 +6,8 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   collection,
-  setDoc, doc, firestore
+  setDoc, doc, db,query, where,
+  getDocs
 } from "../../firebase";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -193,7 +194,7 @@ const SignIn = () => {
   };
 
   const handleRegisterUser = async (e) => {
-    console.log(email);
+    console.log(mobile)
     e.preventDefault();
 
     // Validate form
@@ -220,16 +221,33 @@ const SignIn = () => {
         return;
       }
 
+      const mobileQuery = query(
+        collection(db, "users"),
+        where("phoneNumber", "==", mobile.trim())
+      );
+      const mobileSnapshot = await getDocs(mobileQuery);
+      console.log(mobileSnapshot.empty, "mobileSnapshot")
+
+
+    if (!mobileSnapshot.empty) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "This mobile number is already in use. Please use a different number.",
+      }));
+      setLoading(false); // Reset loading if error occurs
+      return;
+    }
+
       // // Navigate to account verification page if the email is not in use
-      navigate("/otp", {
-        state: {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          mobile: mobile,
-          countryCode: selectedValue,
-        },
-      });
+      // navigate("/otp", {
+      //   state: {
+      //     firstName: firstName,
+      //     lastName: lastName,
+      //     email: email,
+      //     mobile: mobile,
+      //     countryCode: selectedValue,
+      //   },
+      // });
     } catch (error) {
       setLoading(false);
       console.error("Error checking email:", error);

@@ -264,7 +264,7 @@ const OtpVerification = () => {
     setTimeLeft(30); // Reset the timer to 30 seconds
 
     // Simulate OTP resend action
-    verifyPhoneNumber();
+    verifyPhoneNumber(phoneNumber);
   };
 
   return (
