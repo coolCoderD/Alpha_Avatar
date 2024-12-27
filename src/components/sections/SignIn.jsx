@@ -239,15 +239,15 @@ const SignIn = () => {
     }
 
       // // Navigate to account verification page if the email is not in use
-      // navigate("/otp", {
-      //   state: {
-      //     firstName: firstName,
-      //     lastName: lastName,
-      //     email: email,
-      //     mobile: mobile,
-      //     countryCode: selectedValue,
-      //   },
-      // });
+      navigate("/otp", {
+        state: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          mobile: mobile,
+          countryCode: selectedValue,
+        },
+      });
     } catch (error) {
       setLoading(false);
       console.error("Error checking email:", error);
