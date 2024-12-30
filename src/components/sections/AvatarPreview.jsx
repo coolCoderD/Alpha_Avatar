@@ -112,7 +112,7 @@ const AvatarPreview = ({ featureArray }) => {
             
           />
           </div>
-<div className=" flex items-center justify-center gap-2 absolute bottom-40 left-72">
+<div className=" flex items-center justify-center gap-2 absolute bottom-40 left-72 -ml-12 md:-ml-0">
   {/* <img
     src="https://res.cloudinary.com/drts3ztiy/image/upload/v1733924615/sign_bofhe9.png"  // Example direct image URL
     className="h-24 w-80 absolute  -right-[1%] -bottom-[4%]" 

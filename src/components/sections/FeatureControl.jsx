@@ -514,11 +514,12 @@ const storeDownloadData = async (userId, downloadData) => {
   
       <Modal open={open} onClose={handleModalClose}>
         <Box
+          className="w-[400px] md:w-[800px]"
           sx={{
             backgroundColor: "",
             padding: "16px",
             borderRadius: "8px",
-            width: "600px",
+           
             margin: "auto",
             textAlign: "center",
             position: "relative"

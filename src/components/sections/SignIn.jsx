@@ -434,7 +434,7 @@ const SignIn = () => {
                         cursor: "pointer",
                       }}
                     >
-                      Login
+                      Sign in
                     </div>
                   </div>
                 </div>

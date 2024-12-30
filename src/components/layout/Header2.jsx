@@ -63,7 +63,7 @@ const Header2 = () => {
               />
             </Link>
           </div>
-          <Link className="hidden md:block " to={`${user ? "/avatar-creation" : "/login"}`}>
+          <Link className="" to={`${user ? "/avatar-creation" : "/login"}`}>
             <div className=" logo">Alphavatar</div>
           </Link>
         </div>
