@@ -261,10 +261,10 @@ const AvatarCreation = () => {
         </Box>
       </Modal>
       <div className=" md:creation-div1  md:p-8 h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
-        // style={{
-        //   minWidth: "500px",
-        //   minHeight: "300px"
-        // }}
+        style={{
+          minWidth: "500px",
+          minHeight: "300px"
+        }}
       >
         <div className=" mt-20 md:mt-1 text-2xl">Generate Avatars !</div>
         {
@@ -273,7 +273,7 @@ const AvatarCreation = () => {
           </div>
         }
 
-        <div className="gradient-border w-[80%] md:w-[100%]">
+        <div className="gradient-border w-[100%] md:w-[100%]">
           <input
             onChange={(e) => {
               setAvatarText(e.target.value);

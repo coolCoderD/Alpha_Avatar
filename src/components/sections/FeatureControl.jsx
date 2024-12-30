@@ -480,7 +480,7 @@ const storeDownloadData = async (userId, downloadData) => {
   }, [featureStates]);
 
   return (
-    <section className="py-10 overflow-hidden  flex flex-col md:flex-row w-full">
+    <section className="py-10 overflow-auto flex flex-col md:flex-row w-full">
       <Modal open={feedbackOpen} onClose={closeFeedback}>
         <Box
           className="w-[400px] md:w-[800px]"
@@ -493,14 +493,15 @@ const storeDownloadData = async (userId, downloadData) => {
             padding: "24",
             position: "relative"
           }}
-        >  <div   style={{ cursor: "pointer", textAlign: "right" }}>
+        >
+          <div style={{ cursor: "pointer", textAlign: "right" }}>
             <button
               onClick={closeFeedback}
               className="absolute top-[36px] left-[45px] z-50 bg-transparent text-gray-400 font-bold text-5xl"
             >
               ×
             </button>
-
+  
             <FeedbackForm
               featureStates={featureStates}
               userId={parsedUser.uid}
@@ -510,8 +511,7 @@ const storeDownloadData = async (userId, downloadData) => {
           </div>
         </Box>
       </Modal>
-
-
+  
       <Modal open={open} onClose={handleModalClose}>
         <Box
           sx={{
@@ -521,31 +521,26 @@ const storeDownloadData = async (userId, downloadData) => {
             width: "600px",
             margin: "auto",
             textAlign: "center",
-            position: "relative", // Make sure the parent div is positioned relative
+            position: "relative"
           }}
         >
           <div onClick={handleModalClose} style={{ cursor: "pointer", textAlign: "right" }}>
             <button
               onClick={() => setOpen(false)}
               className="absolute top-[36px] left-[4px] z-50 bg-transparent text-gray-400 font-bold text-5xl"
-
             >
               ×
             </button>
-
+  
             <AvatarPreview featureArray={featureStates} />
           </div>
         </Box>
       </Modal>
-
-
-
-
-
+  
       {/* Control Panel */}
-      <div className="gradient-img h-full gap-4  w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start">
+      <div className="gradient-img h-full gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start">
         <div
-          className=" gradient-text  text-2xl"
+          className="gradient-text text-2xl"
           style={{
             backgroundColor: "#2b1d52",
             borderRadius: 34,
@@ -557,40 +552,40 @@ const storeDownloadData = async (userId, downloadData) => {
         </div>
         <div className="gradient-text small-dmsans p-0">Select your Feature:</div>
         <RadioGroup aria-labelledby="feature-selection-label" value={selectedFeatureName} onChange={(e) => handleFeatureSelect(e.target.value)}>
-          {features.map((feature) => (
-            <FormControlLabel
-              key={feature.name}
-              value={feature.name}
-              control={
-                <Radio
-                  sx={{
-                    color: "#fff", // Default color for unselected state
-                    "&.Mui-checked": {
-                      color: "transparent", // Hide default check color
-                    },
-                    "&.Mui-checked::before": {
-                      content: '""',
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      width: "16px",
-                      height: "16px",
-                      borderRadius: "50%",
-                      background: "linear-gradient(to right, #7186FF, #F97689)",
-                      boxShadow: "0 0 0 2px #fff", // White border
-
-                    },
-                  }}
-                />
-              }
-              label={feature.name}
-            />
-          ))}
-
+          <div className="flex flex-wrap gap-2">
+            {features.map((feature) => (
+              <FormControlLabel
+                key={feature.name}
+                value={feature.name}
+                control={
+                  <Radio
+                    sx={{
+                      color: "#fff",
+                      "&.Mui-checked": {
+                        color: "transparent",
+                      },
+                      "&.Mui-checked::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        background: "linear-gradient(to right, #7186FF, #F97689)",
+                        boxShadow: "0 0 0 2px #fff",
+                      },
+                    }}
+                  />
+                }
+                label={feature.name}
+              />
+            ))}
+          </div>
         </RadioGroup>
         {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
-          <div key={type} className="w-[70%] flex  flex-col xl:flex-row items-center justify-center px-2 py-3 ">
+          <div key={type} className="w-[70%] flex flex-col xl:flex-row items-center justify-center px-2 py-3">
             <div className="gradient-text" style={{ fontSize: 18 }}>
               {type.toUpperCase()}:
             </div>
@@ -605,70 +600,62 @@ const storeDownloadData = async (userId, downloadData) => {
               max={500}
               valueLabelDisplay="auto"
               sx={{
-                color: "transparent", // Hide default color
+                color: "transparent",
                 "& .MuiSlider-track": {
-                  background: "linear-gradient(to right, #7186FF, #F97689)", // Gradient on the track
+                  background: "linear-gradient(to right, #7186FF, #F97689)",
                 },
                 "& .MuiSlider-rail": {
-                  background: "#ddd", // Rail color
+                  background: "#ddd",
                 },
                 "& .MuiSlider-thumb": {
-                  background: "linear-gradient(to right, #7186FF, #F97689)", // Gradient on the thumb
-                  border: "2px solid #fff", // White border around the thumb
-                  boxShadow: "0 0 0 4px rgba(255, 255, 255, 0.5)", // Optional: glowing effect
+                  background: "linear-gradient(to right, #7186FF, #F97689)",
+                  border: "2px solid #fff",
+                  boxShadow: "0 0 0 4px rgba(255, 255, 255, 0.5)",
                 },
                 "& .MuiSlider-valueLabel": {
-                  background: "transparent", // To match the design
-                  color: "#fff", // Text color for value label
+                  background: "transparent",
+                  color: "#fff",
                 }
               }}
             />
-
           </div>
         ))}
       </div>
-
+  
       {/* Preview Section */}
-      <div className="w-full  md:w-[60%] flex flex-col p-10 gap-4">
-        <div
-          id="preview-section"
-          className="rounded-[8px] h-full  bg-white flex  justify-center items-center  w-full  overflow-hidden   "
-        >
+      <div className="w-full md:w-[60%] flex flex-col p-10 gap-4">
+        <div id="preview-section" className="rounded-[8px] h-full bg-white flex justify-center items-center w-full overflow-hidden">
           <canvas
             id="mainCanvas"
-            className="bg-white  "
+            className="bg-white"
             width={canvasWidth}
             height={canvasHeight}
-            style={{ display: "block" }}
+            style={{ display: "block", maxWidth: "100%" }}
             ref={mainCanvasRef}
           />
-
         </div>
-
-
-
+  
         <div className="flex gap-12 justify-start">
-          <button onClick={handleModalOpen} className=" preview-image-btn w-[50%]">
+          <button onClick={handleModalOpen} className="preview-image-btn w-[50%]">
             Preview Image
           </button>
-          <button 
-          onClick={handleDownload} className={`h-[49px]  w-[50%] ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
-          disabled={loading}
+          <button
+            onClick={handleDownload}
+            className={`h-[49px] w-[50%] ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
+            disabled={loading}
           >
-            {
-              loading ? "DOWNLOADING...." : "DOWNLOAD"
-            }
+            {loading ? "DOWNLOADING...." : "DOWNLOAD"}
           </button>
         </div>
-        <div className=" flex justify-center items-center">
-          <button onClick={()=>{(handleFeedbackOpen())}} className=" preview-image-btn w-[50%]">
+        <div className="flex justify-center items-center">
+          <button onClick={() => handleFeedbackOpen()} className="preview-image-btn w-[50%]">
             Give Feedback
           </button>
         </div>
-
       </div>
     </section>
   );
+  
 };
 
 export default FeatureControlPanel;
