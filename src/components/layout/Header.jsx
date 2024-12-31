@@ -226,7 +226,7 @@ const Header = () => {
     {membership ? (
         <div className="flex bg-white cursor-pointer w-full justify-center items-center">
     <div className="bg-white cursor-pointer text-lg text-gray-700 px-4 py-1 rounded-full w-full max-w-md text-center">
-      You Have {membership.avatarCountRemaining} avatar left
+      You have {membership.avatarCountRemaining} avatar left
     </div>
     </div>
   ) : (
