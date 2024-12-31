@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react";
-import Button from "../common/Button";
-import "./Header.css";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useUser } from '../../Context/UserContext'
+import { useUser } from "../../Context/UserContext";
+import "./Header.css";
 
 const Header2 = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [active, setActive] = useState("");
   const [isSubscriptionPopupVisible, setIsSubscriptionPopupVisible] = useState(false);
+  const popupRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { user, membership, fetchUserAndMembership, logout } = useUser();
 
   const isMembershipPlanPage = location.pathname.includes("/memberships-plan");
-
-
-  // Consume user context
-  const { user, membership, fetchUserAndMembership, logout } = useUser();
-  console.log(user?.FirstName)
 
   const handleSubscriptionPopup = async () => {
     setIsSubscriptionPopupVisible(true);
@@ -30,19 +26,27 @@ const Header2 = () => {
     setActive(item);
   };
 
-
-  useEffect(() => {
-    console.log("Membership updated in Header:", membership);
-  }, [membership]);
-
-
   const renewHandler = () => {
     setIsSubscriptionPopupVisible(false);
     navigate("/memberships");
   };
 
+  // Close popups when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setIsPopupVisible(false);
+        setIsSubscriptionPopupVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <>
     <header className="header">
       <div className="flex items-center gap-2 justify-between w-full">
         <div
@@ -50,25 +54,19 @@ const Header2 = () => {
           style={{
             display: "flex",
             alignItems: "center",
-
             width: 250,
           }}
         >
           <div>
-            <Link to='http://alphavatar.ca/'>
-              <img
-                style={{ width: 50 }}
-                src="/assets/images/Layer_1.png"
-                alt="Explore"
-              />
+            <Link to="http://alphavatar.ca/">
+              <img style={{ width: 50 }} src="/assets/images/Layer_1.png" alt="Explore" />
             </Link>
           </div>
           <Link className="" to={`${user ? "/avatar-creation" : "/login"}`}>
-            <div className=" logo">Alphavatar</div>
+            <div className="logo">Alphavatar</div>
           </Link>
         </div>
         <div className="flex gap-7 flex-col md:flex-row justify-center items-center">
-
           {user ? (
             <>
               <div
@@ -78,12 +76,27 @@ const Header2 = () => {
                 }}
                 className="cursor-pointer"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-user"
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
               </div>
 
               {isPopupVisible && (
                 <div
-                  className="mt-4  z-[50] p-[20px]"
+                  ref={popupRef}
+                  className="mt-4 z-[50] p-[20px]"
                   style={{
                     position: "absolute",
                     backgroundColor: "white",
@@ -98,35 +111,18 @@ const Header2 = () => {
                     gap: "12px",
                   }}
                 >
-                  <h1 className="text-[#482BE7]">Hi {user.displayName? user.displayName : user.firstName+" "+user.lastName}! Loving your avatars!?</h1>
-                  <h1 className="text-gray-700 text-left text-xl font-semibold">{user.displayName? user.displayName : user.firstName+" "+user.lastName}</h1>
+                  <h1 className="text-[#482BE7]">
+                    Hi {user.displayName ? user.displayName : `${user.firstName} ${user.lastName}`}! Loving your avatars!?
+                  </h1>
+                  <h1 className="text-gray-700 text-left text-xl font-semibold">
+                    {user.displayName ? user.displayName : `${user.firstName} ${user.lastName}`}
+                  </h1>
                   <h1 className="text-gray-700 text-left text-sm -mt-3 font-light">{user.email}</h1>
-
                   <div className="flex flex-col text-gray-700 cursor-pointer gap-8">
-                    {/* <div
-                    className={`flex gap-8 px-10 py-2 cursor-pointer items-center z-20 ${active === 'profile' ? 'bg-[#BAC4FB]' : ''}`}
-                    onClick={() => handleSetActive('profile')}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-user"
-                    >
-                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
-                    </svg>
-                    <h1 className="text-lg cursor-pointer z-20">My Profile</h1>
-                  </div> */}
-
                     <div
-                      className={`flex gap-8 px-10 py-2 z-20 cursor-pointer items-center ${active === 'subscriptions' ? 'bg-[#BAC4FB]' : ''}`}
+                      className={`flex gap-8 px-10 py-2 z-20 cursor-pointer items-center ${
+                        active === "subscriptions" ? "bg-[#BAC4FB]" : ""
+                      }`}
                       onClick={handleSubscriptionPopup}
                     >
                       <svg
@@ -148,12 +144,13 @@ const Header2 = () => {
                       </svg>
                       <h1>My Subscriptions</h1>
                     </div>
-
                     <div
-                      className={`flex px-10 py-2 gap-8 z-20 cursor-pointer items-center ${active === 'logout' ? 'bg-[#BAC4FB]' : ''}`}
+                      className={`flex px-10 py-2 gap-8 z-20 cursor-pointer items-center ${
+                        active === "logout" ? "bg-[#BAC4FB]" : ""
+                      }`}
                       onClick={() => {
                         logout();
-                        navigate('/login')
+                        navigate("/login");
                       }}
                     >
                       <svg
@@ -180,6 +177,7 @@ const Header2 = () => {
 
               {isSubscriptionPopupVisible && (
                 <div
+                  ref={popupRef}
                   className="mt-4 z-[50] p-[20px]"
                   style={{
                     position: "absolute",
@@ -205,43 +203,25 @@ const Header2 = () => {
                         <div>Avatar Remaining</div>
                         <div>{membership.avatarCountRemaining || "N/A"}</div>
                       </div>
-
                     </>
                   ) : (
                     <div className="text-gray-700">No subscription data available.</div>
                   )}
-                  {
-                    !membership && <button
+                  {!membership && (
+                    <button
                       onClick={renewHandler}
                       className="cursor-pointer text-center rounded-lg mt-1 py-2 px-[6px] text-white w-[50%] bg-[#7186FF]"
                     >
                       Subscribe
                     </button>
-                  }
+                  )}
                 </div>
               )}
-
-
             </>
-          ) : (
-            // <a href="/login" className="hover:text-white" style={{ fontSize: 20, fontWeight: 800 }}>
-            //   Sign in
-            // </a>
-            null
-          )}
+          ) : null}
         </div>
-
       </div>
-
-      <nav>
-
-      </nav>
     </header>
-  
-
-
-
-    </>
   );
 };
 
