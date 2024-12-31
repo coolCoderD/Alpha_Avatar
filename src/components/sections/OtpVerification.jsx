@@ -316,7 +316,7 @@ const OtpVerification = () => {
           <div id="recaptcha-container"></div>
         </div>
         <div className="text-[13px] ">
-  Enter the six-digit code sent to your email  and mobile number.
+  Enter the six-digit code sent to your mobile number.
 </div>
               <div className="flex flex-nowrap gap-2 mt-10 justify-center md:justify-start w-full">
   {[...Array(6)].map((_, index) => (
@@ -361,9 +361,9 @@ const OtpVerification = () => {
 </div> */}
 
               </div>
-<div className="flex ">
+<div className="flex justify-center items-center ">
 
-<div className="gradient-border  w-[60%] mt-10">
+<div className="gradient-border  w-[50%] mt-10">
                 <button
 onClick={()=>{handleVerifyOtp()}}
                   className="flex-1 z-50 font-bold text-xl bg-[#7186FF] px-6 py-1 w-full rounded-md"
