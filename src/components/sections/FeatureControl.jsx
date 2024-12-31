@@ -539,89 +539,111 @@ const storeDownloadData = async (userId, downloadData) => {
       </Modal>
   
       {/* Control Panel */}
-      <div className="gradient-img h-full gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start">
-        <div
-          className="gradient-text text-2xl"
-          style={{
-            backgroundColor: "#2b1d52",
-            borderRadius: 34,
-            fontSize: 28,
-            fontWeight: 900,
-          }}
-        >
-          CONTROL PANEL
-        </div>
-        <div className="gradient-text small-dmsans -mt-6 p-0">Select your Feature:</div>
-        <RadioGroup aria-labelledby="feature-selection-label" value={selectedFeatureName} onChange={(e) => handleFeatureSelect(e.target.value)}>
-          <div className="flex flex-wrap gap-2">
-            {features.map((feature) => (
-              <FormControlLabel
-                key={feature.name}
-                value={feature.name}
-                control={
-                  <Radio
-                    sx={{
-                      color: "#fff",
-                      "&.Mui-checked": {
-                        color: "transparent",
-                      },
-                      "&.Mui-checked::before": {
-                        content: '""',
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        width: "16px",
-                        height: "16px",
-                        borderRadius: "50%",
-                        background: "linear-gradient(to right, #7186FF, #F97689)",
-                        boxShadow: "0 0 0 2px #fff",
-                      },
-                    }}
-                  />
-                }
-                label={feature.name}
-              />
-            ))}
-          </div>
-        </RadioGroup>
-        {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
-          <div key={type} className="w-[70%] flex flex-col xl:flex-row items-center justify-center px-1 py-1">
-            <div className="gradient-text" style={{ fontSize: 18 }}>
-              {type.toUpperCase()}:
-            </div>
-            <Slider
-              size="large"
-              value={toCanvasScale(
-                featureStates.find((f) => f.name === selectedFeatureName)?.[type] || 0,
-                type === "width" || type === "height"
-              )}
-              onChange={handleSliderChange(type)}
-              min={0}
-              max={500}
-              valueLabelDisplay="auto"
+      <div
+  className="gradient-img  xl:max-h-[600px] gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start"
+  style={{
+    height: 'auto', // Adjust height dynamically
+    minHeight: '300px', // Ensure a minimum height
+
+  }}
+>
+  <div
+    className="gradient-text   text-2xl"
+    style={{
+      backgroundColor: "#2b1d52",
+      borderRadius: 34,
+      fontSize: 28,
+      fontWeight: 900,
+    }}
+  >
+    CONTROL PANEL
+  </div>
+  <div
+    className="text-white px-3 -mt-8"
+    style={{
+      fontSize: '16px',
+    }}
+  >
+    Select Your Feature:
+  </div>
+  <RadioGroup
+    aria-labelledby="feature-selection-label"
+    value={selectedFeatureName}
+    onChange={(e) => handleFeatureSelect(e.target.value)}
+  >
+    <div className="flex px-3 flex-wrap gap-2">
+      {features.map((feature) => (
+        <FormControlLabel
+          key={feature.name}
+          value={feature.name}
+          control={
+            <Radio
               sx={{
-                color: "transparent",
-                "& .MuiSlider-track": {
+                color: "#fff",
+                "&.Mui-checked": {
+                  color: "transparent",
+                },
+                "&.Mui-checked::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "16px",
+                  height: "16px",
+                  borderRadius: "50%",
                   background: "linear-gradient(to right, #7186FF, #F97689)",
+                  boxShadow: "0 0 0 2px #fff",
                 },
-                "& .MuiSlider-rail": {
-                  background: "#ddd",
-                },
-                "& .MuiSlider-thumb": {
-                  background: "linear-gradient(to right, #7186FF, #F97689)",
-                  border: "2px solid #fff",
-                  boxShadow: "0 0 0 4px rgba(255, 255, 255, 0.5)",
-                },
-                "& .MuiSlider-valueLabel": {
-                  background: "transparent",
-                  color: "#fff",
-                }
               }}
             />
-          </div>
-        ))}
+          }
+          label={feature.name}
+        />
+      ))}
+    </div>
+  </RadioGroup>
+  {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical) "].map((type) => (
+    <div
+      key={type}
+      className="w-[70%]  flex flex-col xl:flex-row items-center justify-between px-1 py-1"
+    >
+      <div className="gradient-text text-left" style={{ fontSize: 18 }}>
+        {type.toUpperCase()}:
       </div>
+      <Slider
+        size="large"
+        value={toCanvasScale(
+          featureStates.find((f) => f.name === selectedFeatureName)?.[type] || 0,
+          type === "width" || type === "height"
+        )}
+        onChange={handleSliderChange(type)}
+        min={0}
+        max={500}
+        valueLabelDisplay="auto"
+        sx={{
+          color: "transparent",
+          "& .MuiSlider-track": {
+            background: "linear-gradient(to right, #7186FF, #F97689)",
+          },
+          "& .MuiSlider-rail": {
+            background: "#ddd",
+          },
+          "& .MuiSlider-thumb": {
+            background: "linear-gradient(to right, #7186FF, #F97689)",
+            border: "2px solid #fff",
+            boxShadow: "0 0 0 4px rgba(255, 255, 255, 0.5)",
+          },
+          "& .MuiSlider-valueLabel": {
+            background: "transparent",
+            color: "#fff",
+          },
+        }}
+      />
+    </div>
+  ))}
+</div>
+
   
       {/* Preview Section */}
       <div className="w-full -mt-8 md:w-[60%] flex flex-col p-10 gap-4">
@@ -636,23 +658,31 @@ const storeDownloadData = async (userId, downloadData) => {
           />
         </div>
   
-        <div className="flex gap-12 justify-start">
-          <button onClick={handleModalOpen} className="preview-image-btn w-[50%]">
-            Preview Image
-          </button>
-          <button
-            onClick={handleDownload}
-            className={`h-[49px] w-[50%] ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
-            disabled={loading}
-          >
-            {loading ? "DOWNLOADING...." : "DOWNLOAD"}
-          </button>
-        </div>
-        <div className="flex justify-center items-center">
-          <button onClick={() => handleFeedbackOpen()} className="preview-image-btn w-[50%]">
-            Give Feedback
-          </button>
-        </div>
+        <div className="flex -mt-10 items-center justify-evenly gap-4 px-4 py-4">
+  <button
+    onClick={handleModalOpen}
+    className="preview-image-btn w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+  >
+    Preview Image
+  </button>
+  
+  <button
+    onClick={handleDownload}
+    className={`w-[30%] h-[50px] rounded-lg font-semibold shadow-md transition-transform transform hover:scale-105 ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
+    disabled={loading}
+  >
+    {loading ? "DOWNLOADING...." : "DOWNLOAD"}
+  </button>
+  
+  <button
+    onClick={() => handleFeedbackOpen()}
+    className="preview-image-btn w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-purple-500 to-red-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+  >
+    Give Feedback
+  </button>
+</div>
+
+
       </div>
     </section>
   );
