@@ -480,7 +480,7 @@ const storeDownloadData = async (userId, downloadData) => {
   }, [featureStates]);
 
   return (
-    <section className="py-10 overflow-auto flex flex-col md:flex-row w-full">
+    <section className="py-10  overflow-hidden flex flex-col -mt-[70px] md:flex-row w-full">
       <Modal open={feedbackOpen} onClose={closeFeedback}>
         <Box
           className="w-[400px] md:w-[800px]"
@@ -551,7 +551,7 @@ const storeDownloadData = async (userId, downloadData) => {
         >
           CONTROL PANEL
         </div>
-        <div className="gradient-text small-dmsans p-0">Select your Feature:</div>
+        <div className="gradient-text small-dmsans -mt-6 p-0">Select your Feature:</div>
         <RadioGroup aria-labelledby="feature-selection-label" value={selectedFeatureName} onChange={(e) => handleFeatureSelect(e.target.value)}>
           <div className="flex flex-wrap gap-2">
             {features.map((feature) => (
@@ -586,7 +586,7 @@ const storeDownloadData = async (userId, downloadData) => {
           </div>
         </RadioGroup>
         {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical)"].map((type) => (
-          <div key={type} className="w-[70%] flex flex-col xl:flex-row items-center justify-center px-2 py-3">
+          <div key={type} className="w-[70%] flex flex-col xl:flex-row items-center justify-center px-1 py-1">
             <div className="gradient-text" style={{ fontSize: 18 }}>
               {type.toUpperCase()}:
             </div>

@@ -178,34 +178,33 @@ const AvatarCreation = () => {
   const info = [
     {
       imageSrc: "/assets/images/Union.png",
-      text: "Faces (Avatar) - designed using letters of a name",
-      imageClass: "top-1 bottom-0",
+      text:"Faces (Avatar) - designed using letters of a name",
+     
     },
     {
       imageSrc: "/assets/images/005-happy 1.png",
-      text: "Customizable - emotions, gender, ethnicity, language",
-      imageClass: "top-0 bottom-0",
+      text:"Customizable - emotions, gender, ethnicity, language",
+    
     },
     {
       imageSrc: "/assets/images/Group.png",
-      text: "Multiple design options to choose from",
-      imageClass: "-top-2 bottom-0",
-      textClass: "ml-9",
+      text:"Multiple design options to choose from",
+
     },
     {
       imageSrc: "/assets/images/Vector.png",
       text: "Customized fonts, size and techniques",
-      imageClass: "bottom-0",
+  
     },
     {
       imageSrc: "/assets/images/Group1.png",
-      text: "Letters used in a unique way to symbolize the character",
-      imageClass: "top-1 bottom-0",
+      text:"Letters used in a unique way to symbolize the character",
+     
     },
     {
       imageSrc: "/assets/images/Group2.png",
       text: "Use for printing, casting, laser cut, molding, & embossed",
-      imageClass: "top-1 bottom-0",
+ 
     },
   ];
 
@@ -261,7 +260,7 @@ const AvatarCreation = () => {
         </Box>
       </Modal>
       <div
-      className="flex justify-center items-center rounded-2xl"
+      className="flex  justify-center px-4 py-16 items-center rounded-2xl"
   style={{
 
     background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
@@ -271,7 +270,7 @@ const AvatarCreation = () => {
 >
 
 
-      <div className=" md:creation-div1  md:p-8 h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
+      <div className=" md:creation-div1  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
           minWidth: "500px",
           minHeight: "300px"
@@ -358,15 +357,16 @@ const AvatarCreation = () => {
 </div>
 
 
-        <div className="hidden md:block">
+        <div className="hidden mt-12 md:block">
           <div className="gradient-border mr-20  md:mr-0 w-[100%]">
             <div className="styled-input flex flex-col gap-1 ">
-              {info.map(({ imageSrc, text, imageClass, textClass = "ml-12" }, index) => (
-                <div key={index} className="flex flex-row relative justify-center items-center gap-1">
-                  <img src={imageSrc} className={`w-[10%] absolute left-0 ${imageClass}`} />
-                  <div className={`small-dmsans ${textClass}`}>{text}</div>
-                </div>
-              ))}
+            {info.map(({ imageSrc, text, imageClass = "w-8 h-8", textClass = "ml-4" }, index) => (
+  <div key={index} className="flex items-center gap-4">
+    <img src={imageSrc} alt={text} className={`${imageClass}`} />
+    <h1 className={`${textClass} small-dmsans `}>{text}</h1>
+  </div>
+))}
+
             </div>
           </div>
 
@@ -374,7 +374,7 @@ const AvatarCreation = () => {
       </div>
       </div>
 
-      {!avatarUrl && !loading ? (
+      {/* {!avatarUrl && !loading ? (
         <div
           className="h-[600px] md:mt-5 flex justify-center items-center my-auto mx-auto text-[48px] font-bold opacity-50 "
         >
@@ -382,7 +382,7 @@ const AvatarCreation = () => {
             Amazing Avatars!</span>
         </div>
 
-      ) : null}
+      ) : null} */}
 
       {loading ? (
         <div className="h-[600px] md:h-[600px] w-full flex justify-center items-center">
@@ -396,12 +396,13 @@ const AvatarCreation = () => {
 
       {avatarUrl && !loading ? (
         <div className=" flex flex-col items-center gap-2 justify-center">
-          <div className=" w-[100%] md:w-[70%] mt-12  relative grid grid-cols-3 gap-12 mx-12 ">
+          <div className=" w-[100%] md:w-[70%] mt-12  relative grid grid-cols-3 gap-32 m-4 mx-12 ">
             {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
               return (
+                <div className="">
                 <div
                   key={key}
-                  className="avatar-card bg-[#FFF]  grid-item flex flex-col justify-between p-1 relative"
+                  className="avatar-card bg-[#FFF] w-[200px] h-[400px] p-1 relative"
                 >
                   <div className=" absolute  flex flex-col items-end right-0">
                     {/* <div>
@@ -440,6 +441,7 @@ const AvatarCreation = () => {
                     }
                   </div>
 
+                </div>
                 </div>
               );
             })}
