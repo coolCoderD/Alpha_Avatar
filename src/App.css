@@ -431,12 +431,12 @@ footer nav a {
     rgba(118, 134, 252, 0.18) 0%,
     rgba(233, 120, 151, 0.18) 100%
   );
-  width: 95%;
+  width: 80%;
   content: "";
   position: absolute;
   display: flow;
   height: fit-content;
-  left: 3%;
+  left:  10%;
   right: 0;
   bottom: 1;
   z-index: -12; /* Place the gradient border below the content */

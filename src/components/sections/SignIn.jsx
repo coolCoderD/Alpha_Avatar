@@ -162,7 +162,8 @@ const SignIn = () => {
       "+62": /^[8]\d{9,10}$/, // Indonesia: 10-11 digits, starts with 8
       "+65": /^[89]\d{7}$/, // Singapore: 8 digits, starts with 8 or 9
       "+254": /^[17]\d{8}$/, // Kenya: 10 digits, starts with 1 or 7
-      "+971": /^[5]\d{8}$/ // UAE: 9 digits, starts with 5
+      "+971": /^[5]\d{8}$/, // UAE: 9 digits, starts with 5
+      "+974": /^3\d{7}$/ // Qatar: 8 digits, starts with 3
 
     };
     
@@ -396,6 +397,8 @@ const SignIn = () => {
 <option value="+65" className="text-black">SG +65</option>
 <option value="+254" className="text-black">KE +254</option>
 <option value="+971" className="text-black">AE +971</option>
+<option value="+974" className="text-black">QA +974</option>
+
 
                   </select>
                   <input

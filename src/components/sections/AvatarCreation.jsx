@@ -260,6 +260,17 @@ const AvatarCreation = () => {
           })}
         </Box>
       </Modal>
+      <div
+      className="flex justify-center items-center rounded-2xl"
+  style={{
+
+    background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
+   
+   
+  }}
+>
+
+
       <div className=" md:creation-div1  md:p-8 h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
           minWidth: "500px",
@@ -360,6 +371,7 @@ const AvatarCreation = () => {
           </div>
 
         </div>
+      </div>
       </div>
 
       {!avatarUrl && !loading ? (
