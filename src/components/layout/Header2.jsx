@@ -98,8 +98,8 @@ const Header2 = () => {
                     gap: "12px",
                   }}
                 >
-                  <h1 className="text-[#482BE7]">Hi {user.displayName}! Loving your avatars!?</h1>
-                  <h1 className="text-gray-700 text-left text-xl font-semibold">{user.displayName}</h1>
+                  <h1 className="text-[#482BE7]">Hi {user.displayName? user.displayName : user.firstName+" "+user.lastName}! Loving your avatars!?</h1>
+                  <h1 className="text-gray-700 text-left text-xl font-semibold">{user.displayName? user.displayName : user.firstName+" "+user.lastName}</h1>
                   <h1 className="text-gray-700 text-left text-sm -mt-3 font-light">{user.email}</h1>
 
                   <div className="flex flex-col text-gray-700 cursor-pointer gap-8">

@@ -242,14 +242,19 @@ const Login = () => {
       setShowAlert({ type: "error", message: "All fields are required" });
       return;
     }
+ 
   
     try {
+    
       setOpen(true); // Start loading spinner
+     
       const userCredential = await signInWithEmailAndPassword(
         auth,
         loginDetails.email,
         loginDetails.password
       );
+      
+
       const user = userCredential.user;
       console.log("Logged in user:", user);
   
@@ -269,11 +274,21 @@ const Login = () => {
         }, 1500);
       } else {
         console.error("No such user in Firestore!");
+        setSnackbarMessage("User not found in the database.");
+        setSnackbarOpen(true);
       }
     } catch (error) {
-      setSnackbarMessage("Invalid email or password");
-      setSnackbarOpen(true);
       console.error("Error logging in:", error);
+    
+      // Handle specific error cases (e.g., invalid credentials, network issues)
+      if (error.code === "auth/wrong-password") {
+        setSnackbarMessage("Incorrect password. Please try again.");
+      } else if (error.code === "auth/user-not-found") {
+        setSnackbarMessage("No account found with this email.");
+      } else {
+        setSnackbarMessage("An unexpected error occurred. Please try again.");
+      }
+      setSnackbarOpen(true);
     } finally {
       setOpen(false); // Ensure loading spinner is closed
     }
@@ -288,6 +303,7 @@ const Login = () => {
   };
   const validateForm = () => {
     const { email, password } = loginDetails;
+
     let valid = true;
     const newErrors = { email: "", password: "" };
 
@@ -324,7 +340,7 @@ const Login = () => {
     return valid;
   };
 
-  console.log(errors,"errors")
+
   // Handle Snackbar close
 const handleSnackbarClose = (event, reason) => {
   if (reason === "clickaway") {

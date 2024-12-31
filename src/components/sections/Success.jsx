@@ -7,29 +7,27 @@ const Success = () => {
       const { user, storeMembershipData,membership } = useUser();
       const navigate=useNavigate();
       useEffect(() => {
-        // Define an async function
         const handlePaymentSuccess = async () => {
           try {
-            // Extract query parameters from the URL
             const queryParams = new URLSearchParams(window.location.search);
             const avatarCount = queryParams.get("avatarCount");
             const price = queryParams.get("price");
             const priceId = queryParams.get("priceId");
             const uid = queryParams.get("uid");
-    
-            // Check if parameters are present
+      
             if (avatarCount && price && priceId && uid) {
-              // Prepare the membership data
+              // Debugging: Log user object
+              console.log("User object:", user);
+      
               const membershipData = {
                 avatarCountRemaining: avatarCount,
                 price: price,
                 priceId: priceId,
                 createdAt: new Date(),
-                uid: user.uid,
-                name: user.displayName,
+                uid: user?.uid || uid, // Fallback to URL uid if user.uid is undefined
+                name: user?.displayName || "Anonymous", // Fallback to 'Anonymous'
               };
-    
-              // Call the function to store membership data
+      
               await storeMembershipData(uid, membershipData);
               console.log("Membership data stored successfully:", membershipData);
             } else {
@@ -39,10 +37,10 @@ const Success = () => {
             console.error("Error handling payment success:", error);
           }
         };
-    
-        // Call the async function
+      
         handlePaymentSuccess();
-      }, [storeMembershipData, user]); // Add dependencies
+      }, [storeMembershipData, user]);
+      // Add dependencies
   return (
     <>
     <Header/>
