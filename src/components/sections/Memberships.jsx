@@ -31,15 +31,15 @@ const Memberships = () => {
     <>
     <Header/>
     <div
-        className="flex flex-col items-center bg-[#0b0c10] gap-8 py-10 px-4"
+        className="flex  flex-col items-center bg-[#0b0c10] gap-8 py-10 px-4"
         style={{ minHeight: "100vh" }}
       >
       <div className="flex flex-col">
         {/* <div className="text-[#7186FF] text-[13px] text-center">PRICING</div> */}
-        <div className="gradient-text-m text-4xl  p-0">Simple Memberships </div>
+        <div className="gradient-text-m text-4xl -mt-6  p-0">Simple Memberships </div>
       </div>
       <div className="flex flex-col">
-        <div className="small-text ">Use the Startup Framework for free. </div>
+        <div className="small-text -mt-6 ">Use the Startup Framework for free. </div>
 
         <div
           className="small-text "
@@ -54,7 +54,7 @@ const Memberships = () => {
 
 
 
-      <div className="text-center">
+      <div className="text-center -mt-6">
         <div
           className="gradient-text p-0 "
           style={{ fontSize: 30, fontWeight: 400 }}
@@ -66,7 +66,7 @@ const Memberships = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center md:flex-row justify-center gap-[100px] ">
+      <div className="flex -mt-6 flex-col items-center md:flex-row justify-center gap-[100px] ">
         {
           [1,2]?.map((item,idx)=>{
             return(
@@ -121,7 +121,7 @@ const Memberships = () => {
        
       </div>
 
-      <div className="flex flex-col xl:flex-row  items-center justify-center gap-[100px] ">
+      <div className="flex -mb-3 -mt-6 flex-col xl:flex-row  items-center justify-center gap-[100px] ">
         {
           [{avatar:10,
             price:50,
