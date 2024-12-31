@@ -61,8 +61,8 @@ const FeatureControlPanel = ({ features, imageURL,text }) => {
 
   const originalWidth = 5000; // Original image width
   const originalHeight = 5000; // Original image height
-  const canvasWidth = 450; // Canvas width in portrait
-  const canvasHeight = 450; // Canvas height in portrait
+  const canvasWidth = 550; // Canvas width in portrait
+  const canvasHeight = 550; // Canvas height in portrait
   
   // Calculate scaling factors for portrait orientation
   const scaleX = canvasWidth / originalWidth;
@@ -624,7 +624,7 @@ const storeDownloadData = async (userId, downloadData) => {
       </div>
   
       {/* Preview Section */}
-      <div className="w-full md:w-[60%] flex flex-col p-10 gap-4">
+      <div className="w-full -mt-8 md:w-[60%] flex flex-col p-10 gap-4">
         <div id="preview-section" className="rounded-[8px] h-full bg-white flex justify-center items-center w-full overflow-hidden">
           <canvas
             id="mainCanvas"
