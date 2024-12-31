@@ -377,7 +377,7 @@ const handleSnackbarClose = (event, reason) => {
         message={snackbarMessage}
       />
       <div style={{   height: '100%', zIndex: 1 ,}}>
-        <div className="login-bg ">
+        <div className="login-bg md:top-[15%] ">
         <div className="login-gradient-text flex justify-center items-center h-[80px] " >
                 Sign in 
             </div>

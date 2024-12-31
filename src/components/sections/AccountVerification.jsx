@@ -162,7 +162,7 @@ const[errors,setErrors]=useState({})
       }}
     >
       <div style={{ zIndex: 0 }}>
-        <div className="login-bg">
+        <div className="login-bg md:top-[15%]">
           <div className="login-gradient-text flex justify-center items-center h-[80px]">
             Sign up
           </div>

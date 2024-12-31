@@ -349,7 +349,7 @@ const AvatarCreation = () => {
 
         <div className="hidden md:block">
           <div className="gradient-border mr-20  md:mr-0 w-[100%]">
-            <div className="styled-input flex flex-col gap-2 ">
+            <div className="styled-input flex flex-col gap-1 ">
               {info.map(({ imageSrc, text, imageClass, textClass = "ml-12" }, index) => (
                 <div key={index} className="flex flex-row relative justify-center items-center gap-1">
                   <img src={imageSrc} className={`w-[10%] absolute left-0 ${imageClass}`} />
@@ -373,7 +373,7 @@ const AvatarCreation = () => {
       ) : null}
 
       {loading ? (
-        <div className="h-[500px] md:h-full w-full flex justify-center items-center">
+        <div className="h-[600px] md:h-[600px] w-full flex justify-center items-center">
         <div className="scrollbar-hidden overflow-y-scroll w-[100%] md:w-[70%] grid-container h-full flex justify-center items-center">
           <div class="spinner mt-8 mb-3">
             <div class="spinnerin "></div>
@@ -389,7 +389,7 @@ const AvatarCreation = () => {
               return (
                 <div
                   key={key}
-                  className="avatar-card bg-[#FFF] grid-item flex flex-col justify-between p-1 relative"
+                  className="avatar-card bg-[#FFF]  grid-item flex flex-col justify-between p-1 relative"
                 >
                   <div className=" absolute  flex flex-col items-end right-0">
                     {/* <div>

@@ -37,7 +37,7 @@ const Description = () => {
           justifyContent: "center",
         }}
       >
-        <div className="login-bg w-[60%]   " >
+        <div className="login-bg  w-[60%]   " >
           <div className="flex flex-col md:flex-col justify-center w-[100%] md:pl-10 pr-14 pr-10 pt-10">
             <div className="bigText pl-9 text-center mb-4 ">
               What description suits you best ?

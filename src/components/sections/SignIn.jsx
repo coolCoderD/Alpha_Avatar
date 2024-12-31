@@ -301,7 +301,7 @@ const SignIn = () => {
           onClose={handleSnackbarClose}
           message={snackbarMessage}
         />
-        <div className="login-bg">
+        <div className="login-bg md:top-[15%]">
           <div id="recaptcha-container"></div>
 
           <div className="login-gradient-text flex justify-center items-center h-[80px]">Sign up as new user</div>

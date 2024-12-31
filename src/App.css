@@ -435,11 +435,10 @@ footer nav a {
   content: "";
   position: absolute;
   display: flow;
-  top: 20%;
   height: fit-content;
   left: 3%;
   right: 0;
-  bottom: 0;
+  bottom: 1;
   z-index: -12; /* Place the gradient border below the content */
   border-radius: 20px; /* Match the border-radius of the container */
   padding: 4px; /* This defines the border width */

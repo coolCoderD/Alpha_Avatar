@@ -31,16 +31,9 @@ const Memberships = () => {
     <>
     <Header/>
     <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        backgroundColor: "#0b0c10",
-        gap: 15,
-        padding:10,
-        
-      }}
-    >
+        className="flex flex-col items-center bg-[#0b0c10] gap-8 py-10 px-4"
+        style={{ minHeight: "100vh" }}
+      >
       <div className="flex flex-col">
         {/* <div className="text-[#7186FF] text-[13px] text-center">PRICING</div> */}
         <div className="gradient-text-m text-4xl  p-0">Simple Memberships </div>
