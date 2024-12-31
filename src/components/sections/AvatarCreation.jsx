@@ -260,7 +260,7 @@ const AvatarCreation = () => {
         </Box>
       </Modal>
       <div
-      className="flex  justify-center px-4 py-16 items-center rounded-2xl"
+      className="flex -mt-4  justify-center px-4 py-16 items-center rounded-2xl"
   style={{
 
     background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
@@ -357,7 +357,7 @@ const AvatarCreation = () => {
 </div>
 
 
-        <div className="hidden mt-12 md:block">
+        <div className="hidden mt-8 md:block">
           <div className="gradient-border mr-20  md:mr-0 w-[100%]">
             <div className="styled-input flex flex-col gap-1 ">
             {info.map(({ imageSrc, text, imageClass = "w-8 h-8", textClass = "ml-4" }, index) => (
@@ -374,7 +374,7 @@ const AvatarCreation = () => {
       </div>
       </div>
 
-      {/* {!avatarUrl && !loading ? (
+      {!avatarUrl && !loading ? (
         <div
           className="h-[600px] md:mt-5 flex justify-center items-center my-auto mx-auto text-[48px] font-bold opacity-50 "
         >
@@ -382,7 +382,7 @@ const AvatarCreation = () => {
             Amazing Avatars!</span>
         </div>
 
-      ) : null} */}
+      ) : null}
 
       {loading ? (
         <div className="h-[600px] md:h-[600px] w-full flex justify-center items-center">
