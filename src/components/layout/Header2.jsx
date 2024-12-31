@@ -99,8 +99,8 @@ const Header2 = () => {
                   className="mt-4 z-[50] p-[20px]"
                   style={{
                     position: "absolute",
-                    backgroundColor: "white",
-                    border: "1px solid #ccc",
+                    backgroundColor: "#171729",
+                   
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                     top: "40px",
                     right: "20px",
@@ -111,14 +111,14 @@ const Header2 = () => {
                     gap: "12px",
                   }}
                 >
-                  <h1 className="text-[#482BE7]">
+                  <h1 className="text-[white]">
                     Hi {user.displayName ? user.displayName : `${user.firstName} ${user.lastName}`}! Loving your avatars!?
                   </h1>
-                  <h1 className="text-gray-700 text-left text-xl font-semibold">
+                  <h1 className="text-gray-300 text-left text-xl font-semibold">
                     {user.displayName ? user.displayName : `${user.firstName} ${user.lastName}`}
                   </h1>
-                  <h1 className="text-gray-700 text-left text-sm -mt-3 font-light">{user.email}</h1>
-                  <div className="flex flex-col text-gray-700 cursor-pointer gap-8">
+                  <h1 className="text-gray-300 text-left text-sm -mt-3 font-light">{user.email}</h1>
+                  <div className="flex flex-col text-gray-300 cursor-pointer gap-8">
                     <div
                       className={`flex gap-8 px-10 py-2 z-20 cursor-pointer items-center ${
                         active === "subscriptions" ? "bg-[#BAC4FB]" : ""
@@ -181,8 +181,8 @@ const Header2 = () => {
                   className="mt-4 z-[50] p-[20px]"
                   style={{
                     position: "absolute",
-                    backgroundColor: "white",
-                    border: "1px solid #ccc",
+                    backgroundColor: "#171729",
+                   
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                     top: "40px",
                     right: "20px",
@@ -195,17 +195,17 @@ const Header2 = () => {
                 >
                   {membership && !isMembershipPlanPage ? (
                     <>
-                      <div className="text-gray-700 flex gap-10 px-12 py-4">
+                      <div className="text-gray-300 flex gap-10 px-12 py-4">
                         <div>Membership Charges</div>
                         <div>C${membership.price || "N/A"}</div>
                       </div>
-                      <div className="text-gray-700 flex gap-10 px-12 py-4">
+                      <div className="text-gray-300 flex gap-10 px-12 py-4">
                         <div>Avatar Remaining</div>
                         <div>{membership.avatarCountRemaining || "N/A"}</div>
                       </div>
                     </>
                   ) : (
-                    <div className="text-gray-700">No subscription data available.</div>
+                    <div className="text-gray-300">No subscription data available.</div>
                   )}
                   {!membership && (
                     <button
