@@ -89,7 +89,7 @@ const MembershipPlans = () => {
     <Header/>
     <div className="flex flex-col bg-[#0b0c10] pt-6 min-h-screen text-white">
       <div className="text-center mb-6">
-        <h1 className="gradient-text text-6xl font-bold">Hello, {user?.displayName || ""}</h1><br/>
+        <h1 className="gradient-text text-6xl font-bold">Hello, {user.displayName? user.displayName : user.firstName+" "+user.lastName}</h1><br/>
         <h2 className="gradient-text text-3xl font-bold">Memberships</h2>
       </div>
       <div className="flex flex-col md:flex-row w-full gap-6 px-6">
