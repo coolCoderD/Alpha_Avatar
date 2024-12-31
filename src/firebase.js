@@ -10,7 +10,8 @@ import {
   setPersistence, 
   browserLocalPersistence ,
   signInWithPhoneNumber,
-  fetchSignInMethodsForEmail
+  fetchSignInMethodsForEmail,
+  sendPasswordResetEmail
 } from "firebase/auth";
 
 import { 
@@ -82,4 +83,6 @@ export {
   arrayUnion,
   query,
   where,
+  sendPasswordResetEmail
 };
+

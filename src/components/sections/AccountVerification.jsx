@@ -183,7 +183,7 @@ const[errors,setErrors]=useState({})
                     Account security
                   </div>
                   <div
-                    className="small-dmsans  w-[100%] text-left"
+                    className="small-dmsans -mb-6  w-[100%] text-left"
                     style={{ textAlign: "left" }}
                   >
                     Create a password to secure your account.<br/>

@@ -212,7 +212,7 @@ const AvatarCreation = () => {
     <>
     <Header/>
     <section
-      className=" py-10 overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
+      className=" py-10 h-full overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
       style={{ alignItems: "flex-start" }}
     >
 
@@ -272,8 +272,8 @@ const AvatarCreation = () => {
 
       <div className=" md:creation-div1 -mt-12  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
-          minWidth: "500px",
-          minHeight: "300px"
+          minWidth: "550px",
+          minHeight: "450px"
         }}
       >
         <div className=" mt-20 md:mt-1 text-2xl">Generate Avatars !</div>
@@ -396,7 +396,7 @@ const AvatarCreation = () => {
 
       {avatarUrl && !loading ? (
         <div className=" flex flex-col items-center gap-2 justify-center">
-          <div className=" w-[100%] md:w-[70%] mt-12  relative grid grid-cols-3 gap-32 m-4 mx-12 ">
+          <div className=" w-[100%] md:w-[70%] -mt-16  relative grid grid-cols-3 gap-32 m-4 mx-12 ">
             {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
               return (
                 <div className="">

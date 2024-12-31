@@ -548,7 +548,7 @@ const storeDownloadData = async (userId, downloadData) => {
   }}
 >
   <div
-    className="gradient-text   text-2xl"
+    className="gradient-text mt-3  text-2xl"
     style={{
       backgroundColor: "#2b1d52",
       borderRadius: 34,

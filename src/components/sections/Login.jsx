@@ -8,7 +8,8 @@ import {
   db,
   setDoc,
   doc,
-  getDoc,provider, signInWithPopup
+  getDoc,provider, signInWithPopup,
+  sendPasswordResetEmail
 } from "../../firebase.js"; // Adjust the path as needed
 
 import Backdrop from '@mui/material/Backdrop';
@@ -336,9 +337,49 @@ const Login = () => {
 
     // Set Errors in State
     setErrors(newErrors);
+    setTimeout(() => setErrors(""), 3000);
 
     return valid;
   };
+
+
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleForgotPassword = async () => {
+    try {
+      if (!loginDetails.email) {
+        setMessage("");
+        setError("Please enter your email.");
+        setTimeout(() => setError(""), 3000); // Clear error after 3 seconds
+        return;
+      }
+  
+      await sendPasswordResetEmail(auth, loginDetails.email);
+  
+      setMessage("Password reset email sent. Please check your inbox.");
+      setError("");
+  
+      // Clear message after 3 seconds
+      setTimeout(() => setMessage(""), 3000);
+    } catch (err) {
+      console.error("Error sending reset email:", err);
+  
+      if (err.code === "auth/user-not-found") {
+        setError("No account found with this email.");
+      } else if (err.code === "auth/invalid-email") {
+        setError("Invalid email format. Please enter a valid email.");
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
+  
+      setMessage("");
+  
+      // Clear error after 3 seconds
+      setTimeout(() => setError(""), 3000);
+    }
+  };
+  
 
 
   // Handle Snackbar close
@@ -445,7 +486,11 @@ const handleSnackbarClose = (event, reason) => {
                        </div>
                 </div>
                 {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
-
+                <h1
+                 onClick={handleForgotPassword}
+                className="small-dmsans cursor-pointer">Don’t remember password?</h1>
+                  {message && <p className="text-green-500 ">{message}</p>}
+                  {error && <p className="text-red-500 ">{error}</p>}
                 <div className="flex flex-row justify-center items-center gap-4 w-[100%]">
       <div
         className={`gradient-border w-[50%] ${

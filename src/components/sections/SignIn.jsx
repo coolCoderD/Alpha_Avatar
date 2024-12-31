@@ -191,6 +191,7 @@ const SignIn = () => {
     // }
 
     setErrors(errors);
+    setTimeout(() => setErrors(""), 3000);
     return Object.keys(errors).length === 0;
   };
 
