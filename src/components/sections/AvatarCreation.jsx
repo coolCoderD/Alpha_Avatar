@@ -270,7 +270,7 @@ const AvatarCreation = () => {
 >
 
 
-      <div className=" md:creation-div1  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
+      <div className=" md:creation-div1 -mt-12  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
           minWidth: "500px",
           minHeight: "300px"
