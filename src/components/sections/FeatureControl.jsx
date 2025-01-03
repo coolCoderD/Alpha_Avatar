@@ -25,7 +25,14 @@ const FeatureControlPanel = ({ features, imageURL,text,featureInfo }) => {
   const navigate = useNavigate();
 
   const {saveMembership,loadFromLocalStorage,saveToLocalStorage,clearLocalStorage,fetchUserAndMembership} = useUser();
-  
+  const specialWords = [
+    "Lefteye",
+    "Leftear",
+    "Lefteyebrow",
+    "Rightear",
+    "Righteye",
+    "Righteyebrow",
+  ];
 
 
   const handleFeedbackOpen = () => {
@@ -205,7 +212,11 @@ const FeatureControlPanel = ({ features, imageURL,text,featureInfo }) => {
   //     setLoading(false);
   //   }
   // };
-  
+  const formatFeatureName = (name) => {
+    return name
+      .replace(/Left(eye|ear|eyebrow)/g, "Left $1")
+      .replace(/Right(eye|ear|eyebrow)/g, "Right $1");
+  }; 
 
 
   const handleDownload = async () => {
@@ -573,7 +584,10 @@ const storeDownloadData = async (userId, downloadData) => {
     onChange={(e) => handleFeatureSelect(e.target.value)}
   >
     <div className="flex px-3 flex-wrap gap-2">
-      {features.map((feature) => (
+      {features.map((feature) => {
+        const formattedName = formatFeatureName(feature.name); // Transform the name
+
+        return(
         <FormControlLabel
           key={feature.name}
           value={feature.name}
@@ -599,17 +613,18 @@ const storeDownloadData = async (userId, downloadData) => {
               }}
             />
           }
-          label={feature.name}
-        />
-      ))}
+          label={formattedName} // Use the formatted name
+
+                />
+      )})}
     </div>
   </RadioGroup>
   {["width", "height", "x-Axis (Horizontal)", "y-Axis (Vertical) "].map((type) => (
     <div
       key={type}
-      className="w-[70%]  flex flex-col xl:flex-row items-center justify-between px-1 py-1"
+      className="w-[70%]  flex flex-col xl:flex-row items-center justify-between px-1 py-1 text-left"
     >
-      <div className="gradient-text text-left" style={{ fontSize: 18 }}>
+      <div className="gradient-text text-left" style={{ fontSize: 18 ,textAlign:'left'}}>
         {type.toUpperCase()}:
       </div>
       <Slider
