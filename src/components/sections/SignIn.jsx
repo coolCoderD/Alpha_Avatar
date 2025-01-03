@@ -163,7 +163,7 @@ const SignIn = () => {
       "+65": /^[89]\d{7}$/, // Singapore: 8 digits, starts with 8 or 9
       "+254": /^[17]\d{8}$/, // Kenya: 10 digits, starts with 1 or 7
       "+971": /^[5]\d{8}$/, // UAE: 9 digits, starts with 5
-      "+974": /^\d{8}$/ // Qatar: 8 digits, starts with 3
+      "+974": /^\d{8}$/ // Qatar: 8 digits
 
     };
     
@@ -180,7 +180,7 @@ const SignIn = () => {
     if (!mobile) {
       errors.mobile = "Mobile number is required.";
     } else if (!selectedValue || !countryMobileRegex[selectedValue]?.test(mobile)) {
-      errors.mobile = `IPlease select Country Code.`;
+      errors.mobile = `Invalid number as per the country code`;
     }
 
     // // Password validation

@@ -208,6 +208,8 @@ const AvatarCreation = () => {
     },
   ];
 
+  console.log(features)
+
   return (
     <>
     <Header/>
@@ -235,7 +237,6 @@ const AvatarCreation = () => {
               border: "none",
               cursor: "pointer",
               color: "black"
-
             }}
           >
             X
@@ -433,7 +434,7 @@ const AvatarCreation = () => {
                       className="w-200px h-400px z-20"
                     />
                     {
-                      membership ? <Link to="/edit-avatar" state={{ imageURL: `https://alphavatar.fun/Results/${avatarText}/${key}`, text: { avatarText } }} className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
+                      membership ? <Link to="/edit-avatar" state={{ imageURL: `https://alphavatar.fun/Results/${avatarText}/${key}`, text: { avatarText }, featureInfo:{value} }} className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
                         <div className="hover:text-white text-white ">Edit</div>
                       </Link> : <Link to="/memberships" className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
                         <div className="hover:text-white text-white ">Edit</div>

@@ -8,7 +8,7 @@ const EditAvatar = () => {
   const [features, setFeatures] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
-  const { imageURL,text } = location.state || {};
+  const { imageURL,text,featureInfo } = location.state || {};
   const avatarId = useMemo(() => imageURL?.split(`/`).pop(), [imageURL]);
 
   useEffect(() => {
@@ -31,7 +31,8 @@ const EditAvatar = () => {
     <>
     <Header></Header>
     <section className="py-10 px-4 flex flex-col md:flex-row w-full">
-      <FeatureControlPanel features={features} imageURL={imageURL} text={text} />
+      <FeatureControlPanel features={features} imageURL={imageURL} text={text}
+      featureInfo={featureInfo} />
     </section>
     </>
   );

@@ -10,7 +10,8 @@ import { doc, deleteDoc, updateDoc, db ,collection,setDoc,arrayUnion} from '../.
 import { useFeedbackState } from "../../Context/FeedbackStateProvider";
 import { useUser } from "../../Context/UserContext";
 
-const FeatureControlPanel = ({ features, imageURL,text }) => {
+const FeatureControlPanel = ({ features, imageURL,text,featureInfo }) => {
+  console.log(featureInfo.value);
   const [open, setOpen] = useState(false);
 
   console.log(text.avatarText);
@@ -540,15 +541,15 @@ const storeDownloadData = async (userId, downloadData) => {
   
       {/* Control Panel */}
       <div
-  className="gradient-img  xl:max-h-[600px] gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start"
+  className="gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start"
   style={{
     height: 'auto', // Adjust height dynamically
     minHeight: '300px', // Ensure a minimum height
-
+    background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
   }}
 >
   <div
-    className="gradient-text mt-3  text-2xl"
+    className="gradient-text   text-2xl"
     style={{
       backgroundColor: "#2b1d52",
       borderRadius: 34,
@@ -642,6 +643,92 @@ const storeDownloadData = async (userId, downloadData) => {
       />
     </div>
   ))}
+<div
+className=""
+
+>
+<div
+className=""
+  style={{
+    padding: "6px", // Space for the gradient border
+    borderRadius: "10px", // Matches the border-radius of the table
+   
+  }}
+>
+  <table
+    className="w-full  text-center border-collapse"
+    style={{
+      borderRadius: "10px", // Inner border radius
+      overflow: "hidden", // Ensures no overflow of content
+      tableLayout: "fixed", // Consistent column widths
+      width: "100%",
+    }}
+  >
+    <thead>
+      <tr>
+        {Object.keys(featureInfo.value).map(
+          (key) =>
+            key !== "features" && (
+<th
+  key={key}
+  className="p-2 relative"
+  style={{
+    fontWeight: "bold",
+    fontSize: "14px",
+    color: "#fff",
+    textAlign: "center",
+    overflow: "hidden", // Ensures no overflow
+  }}
+>
+  <span
+    style={{
+      position: "relative",
+      zIndex: 1, // Keep the text above the pseudo-element
+    }}
+  >
+    {key}
+  </span>
+  <div
+    style={{
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "2px", // Thickness of the border
+      background: "linear-gradient(90deg, #7186ff 0%, #f97689 100%)",
+    }}
+  ></div>
+</th>
+
+            )
+        )}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {Object.entries(featureInfo.value).map(
+          ([key, value]) =>
+            key !== "features" && (
+              <td
+                key={key}
+                className="p-2"
+                style={{
+                  fontSize: "14px",
+                  color: "#fff",
+                  wordWrap: "break-word",
+                }}
+              >
+                {value[0].toUpperCase()}
+              </td>
+            )
+        )}
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
 </div>
 
   
@@ -658,7 +745,7 @@ const storeDownloadData = async (userId, downloadData) => {
           />
         </div>
   
-        <div className="flex -mt-10 items-center justify-evenly gap-4 px-4 py-4">
+    <div className="flex -mt-10 items-center justify-evenly gap-4 px-4 py-4">
   <button
     onClick={handleModalOpen}
     className="preview-image-btn w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"

@@ -279,7 +279,7 @@ const OtpVerification = () => {
       }}
     >
       <div style={{zIndex: 0 }}>
-        <div className="login-bg md:top-[15%]">
+        <div className="login-bg-otp w-[100%] left-0 md:w-[80%] md:left-[10%] md:top-[15%]">
           <div className="login-gradient-text flex justify-center items-center h-[80px]">
             Sign up
           </div>
@@ -294,10 +294,10 @@ const OtpVerification = () => {
             </div>
             <div className="flex flex-col justify-center  items-center w-[100%] md:w-[50%] p-[20px]">
               <div className=" w-[[100%] md:w-[70%]">
-              <div className=" w-[100%] bigText  md:text-left mt-10">
+              <div className=" w-[100%] bigText   md:text-left mt-10">
                 OTP Verification
               </div>
-              <div className="flex flex-col xl:flex-row gap-12 mt-2 mb-6">
+              <div className="flex mx-3  flex-col xl:flex-row gap-12 mt-2 mb-6">
           <input
             type="text"
             placeholder="Enter phone number"
@@ -315,12 +315,12 @@ const OtpVerification = () => {
 
           <div id="recaptcha-container"></div>
         </div>
-        <div className="text-[13px] ">
+        <div className="text-[13px] mx-3 ">
   Enter the six-digit code sent to your mobile number.
 </div>
-              <div className="flex flex-nowrap gap-2 mt-10 justify-center md:justify-start w-full">
+              <div className="flex   flex-nowrap gap-2 mt-10 justify-center md:justify-start w-full">
   {[...Array(6)].map((_, index) => (
-    <div key={index} className="gradient-border-otp ">
+    <div key={index} className="gradient-border-otp  ">
 <input
   id={`otp-input-${index}`}
   type="text"
