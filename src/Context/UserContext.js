@@ -111,13 +111,15 @@ export const UserProvider = ({ children }) => {
 
   // Logout function to clear context and localStorage
   const logout = () => {
+    alert("You have been successfully logged out."); // Show an alert to the user
     console.log("User logged out");
     setUser(null); // Clear user state in context
     saveMembership(null); // Clear membership in both localStorage and context
     localStorage.clear(); // Clear localStorage
-
+  
     // Trigger any additional actions like redirecting to login
   };
+  
 
   // Fetch data on component mount
   useEffect(() => {
