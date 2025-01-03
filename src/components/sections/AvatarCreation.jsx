@@ -214,7 +214,7 @@ const AvatarCreation = () => {
     <>
     <Header/>
     <section
-      className=" py-10 h-full overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
+      className=" py-10  h-full overflow-hidden gradient-img  md:px-4 flex flex-col md:flex-row w-full "
       style={{ alignItems: "flex-start" }}
     >
 
@@ -265,13 +265,11 @@ const AvatarCreation = () => {
   style={{
 
     background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
-   
-   
   }}
 >
 
 
-      <div className=" md:creation-div1 -mt-12  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
+      <div className="-translate-x-32 md:translate-x-0 px-32 md:px-0  md:creation-div1 -mt-12  h-[100%]  rounded-2xl gap-3  w-[100%] md:w-[30%] flex flex-col items-center"
         style={{
           minWidth: "550px",
           minHeight: "450px"
@@ -303,18 +301,20 @@ const AvatarCreation = () => {
                 disabled={loading}
                 style={{
                   cursor: loading ? "not-allowed" : "pointer",
-                  fontSize: 16,
+                  
                   width: "100%",
                   height: 55,
              
                 }}
-                className={`create-your-avatar-btn ${loading
+                className={`create-your-avatar-btn text-[12px] md:text-[16px]  ${loading
                     ? "opacity-50 cursor-not-allowed animate-pulse"
                     : ""
                   }`}
               >
                 <img src="/assets/images/Fantasy.png" alt="Create Avatar" />
+                <div className="">
                 {loading ? "GENERATING..." : "GENERATE"}
+                </div>
               </button>
             </div>
 
@@ -327,11 +327,11 @@ const AvatarCreation = () => {
                 disabled={loading || freeAvatarCount <= 0}
                 style={{
                   cursor: loading || freeAvatarCount <= 0 ? "not-allowed" : "pointer",
-                  fontSize: 16,
+
                   width: "100%",
                   height: 55,
                 }}
-                className={`create-your-avatar-btn ${loading || freeAvatarCount <= 0
+                className={`create-your-avatar-btn text-[12px] md:text-[16px]  ${loading || freeAvatarCount <= 0
                     ? "opacity-50 cursor-not-allowed animate-pulse"
                     : ""
                   }`}
@@ -395,68 +395,77 @@ const AvatarCreation = () => {
         </div>
       ) : null}
 
-      {avatarUrl && !loading ? (
-        <div className=" flex flex-col items-center gap-2 justify-center">
-          <div className=" w-[100%] md:w-[70%] -mt-16  relative grid grid-cols-3 gap-32 m-4 mx-12 ">
-            {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
-              return (
-                <div className="">
-                <div
-                  key={key}
-                  className="avatar-card bg-[#FFF] w-[200px] h-[400px] p-1 relative"
-                >
-                  <div className=" absolute  flex flex-col items-end right-0">
-                    {/* <div>
-                    <a
-                      href={`https://alphavatar.fun/Results/${avatarText}/${key}`}
-                      download={key}
-                      target="_blank"
-                    >
-                      <img src="/assets/images/Download.png" />
-                    </a>
-                  </div> */}
-                    <div
-                      onClick={() => {
-                        handleOpen();
-                        setFeatures(value);
-                      }}
-                    >
-                      <div className="text-black z-50 px-2  cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
-                      </div>
+{avatarUrl && !loading ? (
+        <div className=" grid grid-cols-1 -translate-x-4 px-16 md:px-0 md:-mt-10">
+        <div className=" w-[100%] md:w-[70%]  -mt-16  relative grid grid-cols-1  gap-y-5  md:grid-cols-3 gap-x-52 m-4 mx-12 ">
+          {Object.entries(avatarUrl).slice(0, visibleCount).map(([key, value]) => {
+            return (
+              <div className="">
+              <div
+                key={key}
+                className="avatar-card  bg-[#FFF] w-[200px] h-[400px] p-1 relative"
+              >
+                <div className=" absolute  flex flex-col items-end right-0">
+                  {/* <div>
+                  <a
+                    href={`https://alphavatar.fun/Results/${avatarText}/${key}`}
+                    download={key}
+                    target="_blank"
+                  >
+                    <img src="/assets/images/Download.png" />
+                  </a>
+                </div> */}
+                  <div
+                    onClick={() => {
+                      handleOpen();
+                      setFeatures(value);
+                    }}
+                  >
+                    <div className="text-black z-50 px-2  cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
                     </div>
                   </div>
-                  <div className="avatar-container  relative flex flex-col gap-4 items-center justify-center mt-4  mb-2">
-                    <CircularProgress color="secondary" className="absolute mb-24  mx-auto  inset-0" />
-                    <img
-                      key={key}
-                      src={`https://alphavatar.fun/Results/${avatarText}/${key}`}
-                      className="w-200px h-400px z-20"
-                    />
-                    {
-                      membership ? <Link to="/edit-avatar" state={{ imageURL: `https://alphavatar.fun/Results/${avatarText}/${key}`, text: { avatarText }, featureInfo:{value} }} className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
-                        <div className="hover:text-white text-white ">Edit</div>
-                      </Link> : <Link to="/memberships" className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
-                        <div className="hover:text-white text-white ">Edit</div>
-                      </Link>
-                    }
-                  </div>
+                </div>
+                <div className="avatar-container  relative flex flex-col gap-4 items-center justify-center mt-4  mb-2">
+                  <CircularProgress color="secondary" className="absolute mb-24  mx-auto  inset-0" />
+                  <img
+                    key={key}
+                    src={`https://alphavatar.fun/Results/${avatarText}/${key}`}
+                    className="w-200px h-400px z-20"
+                  />
+                  {
+                    membership ? <Link to="/edit-avatar" state={{ imageURL: `https://alphavatar.fun/Results/${avatarText}/${key}`, text: { avatarText }, featureInfo:{value} }} className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
+                      <div className="hover:text-white text-white ">Edit</div>
+                    </Link> : <Link to="/memberships" className="edit-bg rounded-lg mx-4 w-[60px] py-1  text-center" >
+                      <div className="hover:text-white text-white ">Edit</div>
+                    </Link>
+                  }
+                </div>
 
-                </div>
-                </div>
-              );
-            })}
-          </div>
-          {visibleCount < Object.keys(avatarUrl).length && (
-            <button
-              onClick={loadMoreImages}
-              className="  h-[49px] download-img-btn w-[30%]"
-            >
-              Load More
-            </button>
-          )}
+              </div>
+              </div>
+            );
+          })}
         </div>
-      ) : null}
+        <div className="flex justify-center items-center">
+        {visibleCount < Object.keys(avatarUrl).length && (
+          <button
+            onClick={loadMoreImages}
+            className="  h-[49px] download-img-btn w-[30%]"
+          >
+            Load More
+          </button>
+        )}
+      </div>
+      </div>
+      ) : null} 
+
+
+
+
+
+   
+
 
 
 

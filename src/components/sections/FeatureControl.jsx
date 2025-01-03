@@ -541,11 +541,11 @@ const storeDownloadData = async (userId, downloadData) => {
   
       {/* Control Panel */}
       <div
-  className="gap-4 w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start"
+  className="gap-4 membership-gradient-bg b w-full md:w-[40%] rounded-[18px] border-white border-1 flex flex-col justify-center px-3 items-start"
   style={{
     height: 'auto', // Adjust height dynamically
     minHeight: '300px', // Ensure a minimum height
-    background: 'linear-gradient(180deg, rgba(118, 134, 252, 0.18) 0%, rgba(233, 120, 151, 0.18) 100%)',
+ 
   }}
 >
   <div
@@ -655,13 +655,22 @@ className=""
    
   }}
 >
+<div
+className="hidden md:block"
+  style={{
+    background: "linear-gradient(90deg, #7186ff 0%, #f97689 100%)", // Gradient border effect
+    padding: "2px", // Space for the border thickness
+    borderRadius: "12px", // Outer border radius
+  }}
+>
   <table
-    className="w-full  text-center border-collapse"
+    className="w-full membership-gradient-bg text-center border-collapse"
     style={{
       borderRadius: "10px", // Inner border radius
       overflow: "hidden", // Ensures no overflow of content
       tableLayout: "fixed", // Consistent column widths
       width: "100%",
+      backgroundColor: "#090817 ", // Table background color for contrast
     }}
   >
     <thead>
@@ -694,8 +703,18 @@ className=""
       bottom: 0,
       left: 0,
       width: "100%",
-      height: "2px", // Thickness of the border
+      height: "2px", // Thickness of the bottom border
       background: "linear-gradient(90deg, #7186ff 0%, #f97689 100%)",
+    }}
+  ></div>
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      right: 0,
+      width: "2px", // Thickness of the right border
+      height: "100%",
+      background: "linear-gradient(180deg, #7186ff 0%, #f97689 100%)",
     }}
   ></div>
 </th>
@@ -705,26 +724,47 @@ className=""
       </tr>
     </thead>
     <tbody>
-      <tr>
-        {Object.entries(featureInfo.value).map(
-          ([key, value]) =>
-            key !== "features" && (
-              <td
-                key={key}
-                className="p-2"
-                style={{
-                  fontSize: "14px",
-                  color: "#fff",
-                  wordWrap: "break-word",
-                }}
-              >
-                {value[0].toUpperCase()}
-              </td>
-            )
-        )}
-      </tr>
+    <tr>
+  {Object.entries(featureInfo.value).map(
+    ([key, value]) =>
+      key !== "features" && (
+        <td
+          key={key}
+          className="p-2 relative" // Add `relative` for positioning
+          style={{
+            fontSize: "14px",
+            color: "#fff",
+            wordWrap: "break-word",
+            textAlign: "center", // Optional for alignment
+          }}
+        >
+          <span
+            style={{
+              position: "relative",
+              zIndex: 1, // Keep the text above the pseudo-element
+            }}
+          >
+            {value[0].toUpperCase()}
+          </span>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "2px", // Thickness of the right border
+              height: "100%",
+              background: "linear-gradient(180deg, #7186ff 0%, #f97689 100%)", // Gradient for the right border
+            }}
+          ></div>
+        </td>
+      )
+  )}
+</tr>
+
     </tbody>
   </table>
+</div>
+
 </div>
 </div>
 
@@ -745,17 +785,17 @@ className=""
           />
         </div>
   
-    <div className="flex -mt-10 items-center justify-evenly gap-4 px-4 py-4">
+    <div className="flex flex-col md:flex-row -mt-10 items-center justify-evenly gap-4 px-4 py-4">
   <button
     onClick={handleModalOpen}
-    className="preview-image-btn w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+    className="preview-image-btn md:w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
   >
     Preview Image
   </button>
   
   <button
     onClick={handleDownload}
-    className={`w-[30%] h-[50px] rounded-lg font-semibold shadow-md transition-transform transform hover:scale-105 ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
+    className={`md:w-[30%] h-[50px] rounded-lg font-semibold shadow-md transition-transform transform hover:scale-105 ${loading ? "bg-gray-400 cursor-not-allowed" : "download-img-btn"}`}
     disabled={loading}
   >
     {loading ? "DOWNLOADING...." : "DOWNLOAD"}
@@ -763,7 +803,7 @@ className=""
   
   <button
     onClick={() => handleFeedbackOpen()}
-    className="preview-image-btn w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-purple-500 to-red-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+    className="preview-image-btn md:w-[30%] h-[50px] rounded-lg bg-gradient-to-r from-purple-500 to-red-500 text-white font-semibold shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
   >
     Give Feedback
   </button>
